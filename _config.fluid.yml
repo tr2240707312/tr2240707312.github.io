@@ -348,7 +348,7 @@ iconfont: //at.alicdn.com/t/c/font_1736178_k526ubmyhba.css
 navbar:
   # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
   # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
-  blog_title: "学习永无止境"
+  blog_title: "我的|博客"
 
   # 导航栏毛玻璃特效，实验性功能，可能会造成页面滚动掉帧和抖动，部分浏览器不支持会自动不生效
   # Navigation bar frosted glass special animation. It is an experimental feature
@@ -554,14 +554,13 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: /img/background.png
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
   # Path of the default post cover when `index_img` is not set. If both are empty, no image will be displayed
-  default_index_img:
-
+  default_index_img: 
   # 文章标题下方的元信息
   # Meta information below title
   meta:
@@ -751,20 +750,20 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: Waline
-
-   # Waline 评论系统
-   waline:
-     enable: true
-     serverURL: "https://waline-qvpt7p7e4-tr2240707312s-projects.vercel.app/"  # 你的 Waline 服务地址
-     appId: ""  # 如果用 LeanCloud，填写 AppID
-     appKey: "" # 如果用 LeanCloud，填写 AppKey
-     placeholder: "欢迎留言~"  # 评论框占位文字
-     avatar: "mp"  # 头像风格（可选）
-     meta: ["nick", "mail", "link"]  # 评论者信息
-     pageSize: 10  # 每页评论数
-     lang: "zh-CN"  # 语言
-     emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
+    type: waline
+    
+    # Waline 评论系统
+  waline:
+    enable: true
+    serverURL: "https://waline-16b4041pn-tr2240707312s-projects.vercel.app"  # 你的 Waline 服务地址
+    appId: ""  # 如果用 LeanCloud，填写 AppID
+    appKey: "" # 如果用 LeanCloud，填写 AppKey
+    placeholder: "欢迎留言~"  # 评论框占位文字
+    avatar: "mp"  # 头像风格（可选）
+    meta: ["nick", "mail", "link"]  # 评论者信息
+    pageSize: 10  # 每页评论数
+    lang: "zh-CN"  # 语言
+    emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
 
 #---------------------------
 # 评论插件
