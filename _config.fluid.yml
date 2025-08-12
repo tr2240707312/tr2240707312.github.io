@@ -755,16 +755,16 @@ post:
 
    # Waline 评论系统
    waline:
-   	enable: true
-  	serverURL: "https://waline-qvpt7p7e4-tr2240707312s-projects.vercel.app/"  # 你的 Waline 服务地址
-  	appId: ""  # 如果用 LeanCloud，填写 AppID
-  	appKey: "" # 如果用 LeanCloud，填写 AppKey
-  	placeholder: "欢迎留言~"  # 评论框占位文字
-  	avatar: "mp"  # 头像风格（可选）
-  	meta: ["nick", "mail", "link"]  # 评论者信息
-  	pageSize: 10  # 每页评论数
-  	lang: "zh-CN"  # 语言
-  	emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
+     enable: true
+     serverURL: "https://waline-qvpt7p7e4-tr2240707312s-projects.vercel.app/"  # 你的 Waline 服务地址
+     appId: ""  # 如果用 LeanCloud，填写 AppID
+     appKey: "" # 如果用 LeanCloud，填写 AppKey
+     placeholder: "欢迎留言~"  # 评论框占位文字
+     avatar: "mp"  # 头像风格（可选）
+     meta: ["nick", "mail", "link"]  # 评论者信息
+     pageSize: 10  # 每页评论数
+     lang: "zh-CN"  # 语言
+     emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
 
 #---------------------------
 # 评论插件
