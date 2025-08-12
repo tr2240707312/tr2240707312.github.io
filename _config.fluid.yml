@@ -747,12 +747,24 @@ post:
   # 评论插件
   # Comment plugin
   comments:
-    enable: false
+    enable: true
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: disqus
+    type: Waline
 
+   # Waline 评论系统
+   waline:
+   	enable: true
+  	serverURL: "https://waline-qvpt7p7e4-tr2240707312s-projects.vercel.app/"  # 你的 Waline 服务地址
+  	appId: ""  # 如果用 LeanCloud，填写 AppID
+  	appKey: "" # 如果用 LeanCloud，填写 AppKey
+  	placeholder: "欢迎留言~"  # 评论框占位文字
+  	avatar: "mp"  # 头像风格（可选）
+  	meta: ["nick", "mail", "link"]  # 评论者信息
+  	pageSize: 10  # 每页评论数
+  	lang: "zh-CN"  # 语言
+  	emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
 
 #---------------------------
 # 评论插件
@@ -918,7 +930,7 @@ discuss:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: /img/background.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -929,7 +941,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/background.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -958,7 +970,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/background.png
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -975,7 +987,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/background.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar.png
