@@ -238,6 +238,7 @@ custom_js:
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
 custom_css:
+  - /css/waline.css
 
 # 网页访问统计
 # Analysis of website visitors
@@ -751,20 +752,6 @@ post:
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
     type: waline
-    
-    # Waline 评论系统
-  waline:
-    enable: true
-    serverURL: "https://diefang.cn"  # 你的 Waline 服务地址
-    appId: ""  # 如果用 LeanCloud，填写 AppID
-    appKey: "" # 如果用 LeanCloud，填写 AppKey
-    placeholder: "欢迎留言~"  # 评论框占位文字
-    avatar: "mp"  # 头像风格（可选）
-    meta: ["nick", "mail", "link"]  # 评论者信息
-    pageSize: 10  # 每页评论数
-    lang: "zh-CN"  # 语言
-    emoji: ["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"]  # 表情包
-
 #---------------------------
 # 评论插件
 # Comment plugins
@@ -844,7 +831,7 @@ valine:
 # Derived from Valine, with self-hosted service and new features
 # See: https://waline.js.org/
 waline:
-  serverURL: ''
+  serverURL: 'https://www.diefang.cn'
   path: window.location.pathname
   meta: ['nick', 'mail', 'link']
   requiredMeta: ['nick']
@@ -1125,7 +1112,7 @@ static_prefix:
 
   valine: https://lib.baomitu.com/valine/1.5.1/
 
-  waline: https://registry.npmmirror.com/@waline/client/2.15.8/files/dist/
+  waline: /js/waline.js
 
   gitalk: https://lib.baomitu.com/gitalk/1.8.0/
 
