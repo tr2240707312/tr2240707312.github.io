@@ -61,6 +61,10 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/waline.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -224,6 +228,19 @@
   <h2 id="1-一二三四五"><a href="#1-一二三四五" class="headerlink" title="1.一二三四五"></a>1.一二三四五</h2><h3 id="1-1-测试"><a href="#1-1-测试" class="headerlink" title="1.1 测试"></a>1.1 测试</h3><h3 id="1-2-test"><a href="#1-2-test" class="headerlink" title="1.2 test"></a>1.2 test</h3><h2 id="2-上山打老虎"><a href="#2-上山打老虎" class="headerlink" title="2.上山打老虎"></a>2.上山打老虎</h2>
 
   
+
+<script src="/js/waline.js"></script>
+<script>
+  Waline.init({
+    el: '#waline',
+    serverURL: 'https://www.diefang.cn',  // 确保与配置一致
+    path: window.location.pathname,
+    meta: ['nick', 'mail', 'link'],
+    requiredMeta: ['nick'],
+    lang: 'zh-CN'
+  });
+</script>
+
 
 </article>
 
