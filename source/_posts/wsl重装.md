@@ -7,6 +7,8 @@ tags:
   - 子系统重装
 categories:
   - [work,子系统重装]
+author:
+  - tang  
 ---
 
 ```powershell

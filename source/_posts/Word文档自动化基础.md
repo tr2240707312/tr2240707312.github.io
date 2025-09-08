@@ -6,6 +6,8 @@ tags:
   - 办公自动化
 categories:
   - [work,Python第三方库]
+author:
+  - long  
 ---
 
 # 1. 基本介绍

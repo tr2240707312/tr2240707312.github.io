@@ -8,6 +8,8 @@ tags:
   - 域名申请
 categories:
   - [work,环境部署]
+author:
+  - long  
 ---
 
 `通常在线上部署个人博客需要租借云服务器，而通过借助Node.js特性以及GitHub Page的帮助，我们利用Hexo（一个基于 Node.js 的快速、简洁且高效的静态网站生成器）完成本地博客与静态资源的映射，将项目托管给GitHub，从而省下一笔租借云服务器的费用，Hexo的丰富生态也使得博客页面有了较大的定制化空间，这是我们选择使用Hexo + GitHub搭建个人博客的重要原因！`
@@ -35,7 +37,7 @@ nvm install 18
 nvm list
 ```
 
-<img src="./static/img/hexo/1.png" alt="image-20250623164606527" style="zoom: 50%;" />
+<img src="/img/hexo/1.png" alt="image-20250623164606527" style="zoom: 50%;" />
 
 ```bash
 # 启用指定版本的node.js环境
@@ -50,7 +52,7 @@ nvm use 18.20.8
 
 梯子确保可用后，在系统此处可查看代理服务器地址
 
-<img src="./static/img/hexo/2.png" alt="image-20250629150439961" style="zoom: 50%;" />
+<img src="/img/hexo/2.png" alt="image-20250629150439961" style="zoom: 50%;" />
 
 ```bash
 # 通过如下方式配置代理服务器地址
@@ -71,7 +73,7 @@ ssh-keygen -t rsa -C "你的邮箱地址"
 
 命令完成后若 `C:\Users\你的本机用户名\.ssh` 目录下拥有如下文件，说明本地私钥创建成功
 
-<img src="./static/img/hexo/3.png" alt="image-20250623165204572" style="zoom:67%;" />
+<img src="/img/hexo/3.png" alt="image-20250623165204572" style="zoom:67%;" />
 
 启动 SSH 代理（ssh-agent）并将私钥添加到代理中
 
@@ -87,11 +89,11 @@ ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
 ```
 
-<img src="./static/img/hexo/4.png" alt="image-20250623165644488" style="zoom:67%;" />
+<img src="/img/hexo/4.png" alt="image-20250623165644488" style="zoom:67%;" />
 
 打开GitHub进入个人Setting界面，将查询到的公钥信息复制并添加
 
-<img src="./static/img/hexo/5.png" alt="image-20250623165928605" style="zoom:50%;" />
+<img src="/img/hexo/5.png" alt="image-20250623165928605" style="zoom:50%;" />
 
 使用如下命令验证该环节是否成功
 
@@ -99,7 +101,7 @@ cat ~/.ssh/id_rsa.pub
 ssh -T git@github.com
 ```
 
-<img src="./static/img/hexo/6.png" alt="image-20250623170124316" style="zoom:67%;" />
+<img src="/img/hexo/6.png" alt="image-20250623170124316" style="zoom:67%;" />
 
 ## 1.3 Hexo基本配置
 
@@ -116,9 +118,9 @@ npm install hexo-deployer-git --save
 hexo server
 ```
 
-<img src="./static/img/hexo/7.png" alt="image-20250623171307314" style="zoom:67%;" />
+<img src="/img/hexo/7.png" alt="image-20250623171307314" style="zoom:67%;" />
 
-<img src="./static/img/hexo/8.png" alt="image-20250623171331262" style="zoom:50%;" />
+<img src="/img/hexo/8.png" alt="image-20250623171331262" style="zoom:50%;" />
 
 # 2. 利用GitHub管理
 
@@ -128,13 +130,13 @@ hexo server
 
    > 名称必须符合上述规则，否则可能会出错
 
-   <img src="./static/img/hexo/9.png" alt="image-20250629204150588" style="zoom: 50%;" />
+   <img src="/img/hexo/9.png" alt="image-20250629204150588" style="zoom: 50%;" />
 
-   ![image-20250629201442687](./static/img/hexo/10.png)
+   ![image-20250629201442687](/img/hexo/10.png)
 
 2. 将该项目克隆至本地（点进仓库即可看见克隆地址）
 
-   <img src="./static/img/hexo/11.png" alt="image-20250629204842349" style="zoom:67%;" />
+   <img src="/img/hexo/11.png" alt="image-20250629204842349" style="zoom:67%;" />
 
    在自定义的路径下，使用git工具完成项目克隆，未来在此项目下完成博客编写
 
@@ -149,7 +151,7 @@ hexo server
    git checkout -b "code"
    ```
 
-   <img src="./static/img/hexo/12.png" alt="image-20250629203023711" style="zoom: 67%;" />
+   <img src="/img/hexo/12.png" alt="image-20250629203023711" style="zoom: 67%;" />
 
    将本地分支推送至于远程，首次推送分支至远程需要本地内容有改动
 
@@ -166,7 +168,7 @@ hexo server
 
    通过GitHub仓库验证推送是否成功
 
-   <img src="./static/img/hexo/13.png" alt="image-20250629211413286" style="zoom:50%;" />
+   <img src="/img/hexo/13.png" alt="image-20250629211413286" style="zoom:50%;" />
 
 ## 2.2 创建Hexo项目
 
@@ -179,7 +181,7 @@ hexo server
 
 2. 打开 Hexo 项目下的 `_config.yml`
 
-   <img src="./static/img/hexo/14.png" alt="image-20250623172228084" style="zoom:67%;" />
+   <img src="/img/hexo/14.png" alt="image-20250623172228084" style="zoom:67%;" />
 
    拉至文件最下方，对相关内容进行修改
 
@@ -199,7 +201,7 @@ hexo server
 
    > 确保此时git属于code分支（在当前目录下打开git bash，若命令行处末尾显示code即说明当前处于code分支），若处于main分支则需要切换分支后再进行剪切，后续我们使用code分支完成源码的备份，使用main分支完成项目的静态资源维护
 
-   <img src="./static/img/hexo/15.png" alt="image-20250629212144974" style="zoom:67%;" />
+   <img src="/img/hexo/15.png" alt="image-20250629212144974" style="zoom:67%;" />
 
 2. 将源码进行备份至GitHub仓库
 
@@ -214,7 +216,7 @@ hexo server
 
    此时可在 code 分支看见我们推送的数据
 
-   <img src="./static/img/hexo/16.png" alt="image-20250629213024701" style="zoom:67%;" />
+   <img src="/img/hexo/16.png" alt="image-20250629213024701" style="zoom:67%;" />
 
 ### 2.2.1 静态资源维护
 
@@ -241,7 +243,7 @@ hexo server
 
 3. 此时可在main分支查看部署的具体资源情况
 
-   <img src="./static/img/hexo/17.png" alt="image-20250629215128189" style="zoom:67%;" />
+   <img src="/img/hexo/17.png" alt="image-20250629215128189" style="zoom:67%;" />
 
    此时可以通过网址访问初始页面
 
@@ -249,7 +251,7 @@ hexo server
    https://你的GitHub账户名.github.io/
    ```
 
-   <img src="./static/img/hexo/18.png" alt="image-20250629215424932" style="zoom: 50%;" />
+   <img src="/img/hexo/18.png" alt="image-20250629215424932" style="zoom: 50%;" />
 
 ## 2.3 后续维护
 
@@ -267,49 +269,49 @@ hexo server
 
 从经济实惠的角度考虑，选择.top后缀的域名即可，域名申请需要实名认证，可能需要半天左右的时间，具体的不再赘述，只需跟着系统指引即可
 
-<img src="./static/img/hexo/19.png" alt="image-20250630204211025" style="zoom:67%;" />
+<img src="/img/hexo/19.png" alt="image-20250630204211025" style="zoom:67%;" />
 
 完成域名申请后，可在个人主页查询域名的具体情况，如下👇
 
-<img src="./static/img/hexo/20.png" alt="image-20250630204451421" style="zoom:50%;" />
+<img src="/img/hexo/20.png" alt="image-20250630204451421" style="zoom:50%;" />
 
 ### 2.4.2 绑定GitHub Page
 
 1. 在博客项目的source文件夹下下创建“CNAME”文件，内容填写为自己的域名（如上即xxx.top，不要包含https，www以及斜杠部分）
 
-   <img src="./static/img/hexo/21.png" alt="image-20250702094707036" style="zoom: 67%;" />
+   <img src="/img/hexo/21.png" alt="image-20250702094707036" style="zoom: 67%;" />
 
    使用add，commit，push老三样将新添的内容推送至code分支
 
-   <img src="./static/img/hexo/22.png" alt="image-20250630205441059" style="zoom:67%;" />
+   <img src="/img/hexo/22.png" alt="image-20250630205441059" style="zoom:67%;" />
 
 2. 进入腾讯云的域名管理界面，点击需要目标域名的“解析”
 
-   <img src="./static/img/hexo/23.png" alt="image-20250701194319708" style="zoom:67%;" />
+   <img src="/img/hexo/23.png" alt="image-20250701194319708" style="zoom:67%;" />
 
    点击“新手快速解析”
 
-   <img src="./static/img/hexo/24.png" alt="image-20250701194454790" style="zoom: 50%;" />
+   <img src="/img/hexo/24.png" alt="image-20250701194454790" style="zoom: 50%;" />
 
    填写自己GitHub仓库的访问地址
 
-   <img src="./static/img/hexo/25.png" alt="image-20250701194713777" style="zoom: 50%;" />
+   <img src="/img/hexo/25.png" alt="image-20250701194713777" style="zoom: 50%;" />
 
    完成后可看到如下两条记录，对腾讯云的操作到此结束
 
-   <img src="./static/img/hexo/26.png" alt="image-20250701194856377" style="zoom:50%;" />
+   <img src="/img/hexo/26.png" alt="image-20250701194856377" style="zoom:50%;" />
 
 3. 进入GitHub仓库对应的Settings部分，选择Page选项，并将自己的域名填入保存
 
-   <img src="./static/img/hexo/27.png" alt="image-20250630205714086" style="zoom:67%;" />
+   <img src="/img/hexo/27.png" alt="image-20250630205714086" style="zoom:67%;" />
 
    当出现如下标志时，说明域名与该项目成功绑定
 
-   <img src="./static/img/hexo/28.png" alt="image-20250701195148565" style="zoom:67%;" />
+   <img src="/img/hexo/28.png" alt="image-20250701195148565" style="zoom:67%;" />
 
 4. 使用绑定的域名进行访问，成功跳转至我们自己的项目
 
-   <img src="./static/img/hexo/29.png" alt="image-20250701195253497" style="zoom:67%;" />
+   <img src="/img/hexo/29.png" alt="image-20250701195253497" style="zoom:67%;" />
 
 # 3. 从使用的角度出发认识Hexo
 
@@ -335,13 +337,13 @@ hexo server
 | `title`    | 网站标题（不同主题显示位置不一致）   |
 | `subtitle` | 网站副标题（不同主题显示位置不一致） |
 
-<img src="./static/img/hexo/30.png" alt="image-20250702095654608" style="zoom:67%;" />
+<img src="/img/hexo/30.png" alt="image-20250702095654608" style="zoom:67%;" />
 
 | 设置                 | 描述                                                         |
 | :------------------- | :----------------------------------------------------------- |
-| `description`        | 网站描述（在搜索引擎搜索出来后展示的简短描述）<br /><img src="./static/img/hexo/31.png" alt="image-20250702100455980" style="zoom: 50%;" /> |
+| `description`        | 网站描述（在搜索引擎搜索出来后展示的简短描述）<br /><img src="/img/hexo/31.png" alt="image-20250702100455980" style="zoom: 50%;" /> |
 | `keywords`           | 网站的关键词，支持多个关键词【Yml列表】（一些主题可以用于站内搜索） |
-| `author`             | 作者名称（网页左下角）<br /><img src="./static/img/hexo/32.png" alt="image-20250702100654273" style="zoom: 50%;" /> |
+| `author`             | 作者名称（网页左下角）<br /><img src="/img/hexo/32.png" alt="image-20250702100654273" style="zoom: 50%;" /> |
 | `language`           | 网站使用的语言，默认为 `en`（即英文），中文简体为`zh-CN`     |
 | `timezone`           | 网站时区， 电脑对应时区，对于中国大陆地区可以使用 `Asia/Shanghai` |
 | `permalink`          | 文章的[永久链接](https://hexo.io/zh-cn/docs/permalinks)格式，设置为`blog/:categoty/:title/`即文章生成的静态页面放在`blog/分类名/文章名`目录下 |
@@ -367,7 +369,7 @@ category_generator:
 
 初始情况下，Hexo为我们提供了三种模板
 
-<img src="./static/img/hexo/33.png" alt="image-20250707203104866" style="zoom:50%;" />
+<img src="/img/hexo/33.png" alt="image-20250707203104866" style="zoom:50%;" />
 
 当创建一篇新文章时，我们需要用如下命令，这样创建出的文章会按照目录结构存放
 
@@ -390,11 +392,11 @@ tags:
 
 创建后的文件存放在`source`文件夹的`_post`目录下
 
-<img src="./static/img/hexo/34.png" alt="image-20250707204427194" style="zoom:67%;" />
+<img src="/img/hexo/34.png" alt="image-20250707204427194" style="zoom:67%;" />
 
 创建出的初始内容如下，`title`部分为传入参数，日期为创建时的日期。这部分信息在`Hexo`中称为[Front-matter](https://hexo.io/zh-cn/docs/front-matter)，更多参数详情请见官方文档，此处仅介绍用法
 
-<img src="./static/img/hexo/35.png" alt="image-20250707204704275" style="zoom:67%;" />
+<img src="/img/hexo/35.png" alt="image-20250707204704275" style="zoom:67%;" />
 
 当需要为文章划定分类或者添加标签时，在`Front-matter`中使用`tags`或`categories`关键字进行标签或者分类管理
 
@@ -457,11 +459,11 @@ categories:
 
    在`node_modules`文件夹下看见`hexo-theme-fluid`即安装成功
 
-   <img src="./static/img/hexo/36.png" alt="image-20250707223123613" style="zoom:67%;" />
+   <img src="/img/hexo/36.png" alt="image-20250707223123613" style="zoom:67%;" />
 
 2. 进入`hexo-theme-fluid`文件夹，复制其`_config.yml`配置文件并将其重命名为`_config.fluid.yml`，移动至项目根目录
 
-   <img src="./static/img/hexo/37.png" alt="image-20250707223340557" style="zoom:50%;" />
+   <img src="/img/hexo/37.png" alt="image-20250707223340557" style="zoom:50%;" />
 
 3. 打开`_config.yml`进行配置
 
@@ -472,7 +474,7 @@ categories:
 
    此时在本地使用命令`hexo server`后已能顺利访问到修改后的主题
 
-   <img src="./static/img/hexo/38.png" alt="image-20250707223646403" style="zoom:50%;" />
+   <img src="/img/hexo/38.png" alt="image-20250707223646403" style="zoom:50%;" />
 
 4. 创建“关于”界面
 
@@ -481,7 +483,7 @@ categories:
    hexo new page "关于本站"
    ```
 
-   <img src="./static/img/hexo/39.png" alt="image-20250707230420537" style="zoom:50%;" />
+   <img src="/img/hexo/39.png" alt="image-20250707230420537" style="zoom:50%;" />
 
 ## 3.5 更多定制化服务
 
@@ -489,8 +491,8 @@ categories:
 
 例如需要修改背景图片，则定位至`node_modules\hexo-theme-fluid\source\img`路径下添加自己的图片并修改配置文件路径即可，此外还有诸多插件可以用于丰富主题内容，如背景音乐等，具体的情况可在网上查询相关资料进行添加。
 
-<img src="./static/img/hexo/40.png" alt="image-20250708102053016" style="zoom:67%;" />
+<img src="/img/hexo/40.png" alt="image-20250708102053016" style="zoom:67%;" />
 
-<img src="./static/img/hexo/41.png" alt="image-20250708102013453" style="zoom: 67%;" />
+<img src="/img/hexo/41.png" alt="image-20250708102013453" style="zoom: 67%;" />
 
 关于背景图片固定，毛玻璃背景特效等可参考👉[Hexo fluid 全屏背景图随日夜模式切换以及正文底页毛玻璃效果](https://4rozen.github.io/archives/Hexo/60191.html)
