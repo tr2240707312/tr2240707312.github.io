@@ -1,266 +1,447 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo + GitHub完成个人博客部署 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="本文详细阐述了通过Hexo + GitHub部署个人在线博客的全部流程，有兴趣的朋友可以跟着动手尝试搭建属于自己的个人博客！">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="long">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文详细阐述了通过Hexo + GitHub部署个人在线博客的全部流程，有兴趣的朋友可以跟着动手尝试搭建属于自己的个人博客！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + GitHub完成个人博客部署">
 <meta property="og:url" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本文详细阐述了通过Hexo + GitHub部署个人在线博客的全部流程，有兴趣的朋友可以跟着动手尝试搭建属于自己的个人博客！">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/1.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/2.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/3.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/4.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/5.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/6.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/7.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/8.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/9.png">
-<meta property="og:image" content="http://example.com/static/img/hexo/10.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/11.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/12.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/13.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/14.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/15.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/16.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/17.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/18.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/19.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/20.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/21.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/22.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/23.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/24.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/25.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/26.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/27.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/28.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/29.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/30.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/31.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/32.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/33.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/34.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/35.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/36.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/37.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/38.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/39.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/40.png">
-<meta property="og:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/41.png">
+<meta property="og:image" content="http://example.com/img/hexo/1.png">
+<meta property="og:image" content="http://example.com/img/hexo/2.png">
+<meta property="og:image" content="http://example.com/img/hexo/3.png">
+<meta property="og:image" content="http://example.com/img/hexo/4.png">
+<meta property="og:image" content="http://example.com/img/hexo/5.png">
+<meta property="og:image" content="http://example.com/img/hexo/6.png">
+<meta property="og:image" content="http://example.com/img/hexo/7.png">
+<meta property="og:image" content="http://example.com/img/hexo/8.png">
+<meta property="og:image" content="http://example.com/img/hexo/9.png">
+<meta property="og:image" content="http://example.com/img/hexo/10.png">
+<meta property="og:image" content="http://example.com/img/hexo/11.png">
+<meta property="og:image" content="http://example.com/img/hexo/12.png">
+<meta property="og:image" content="http://example.com/img/hexo/13.png">
+<meta property="og:image" content="http://example.com/img/hexo/14.png">
+<meta property="og:image" content="http://example.com/img/hexo/15.png">
+<meta property="og:image" content="http://example.com/img/hexo/16.png">
+<meta property="og:image" content="http://example.com/img/hexo/17.png">
+<meta property="og:image" content="http://example.com/img/hexo/18.png">
+<meta property="og:image" content="http://example.com/img/hexo/19.png">
+<meta property="og:image" content="http://example.com/img/hexo/20.png">
+<meta property="og:image" content="http://example.com/img/hexo/21.png">
+<meta property="og:image" content="http://example.com/img/hexo/22.png">
+<meta property="og:image" content="http://example.com/img/hexo/23.png">
+<meta property="og:image" content="http://example.com/img/hexo/24.png">
+<meta property="og:image" content="http://example.com/img/hexo/25.png">
+<meta property="og:image" content="http://example.com/img/hexo/26.png">
+<meta property="og:image" content="http://example.com/img/hexo/27.png">
+<meta property="og:image" content="http://example.com/img/hexo/28.png">
+<meta property="og:image" content="http://example.com/img/hexo/29.png">
+<meta property="og:image" content="http://example.com/img/hexo/30.png">
+<meta property="og:image" content="http://example.com/img/hexo/31.png">
+<meta property="og:image" content="http://example.com/img/hexo/32.png">
+<meta property="og:image" content="http://example.com/img/hexo/33.png">
+<meta property="og:image" content="http://example.com/img/hexo/34.png">
+<meta property="og:image" content="http://example.com/img/hexo/35.png">
+<meta property="og:image" content="http://example.com/img/hexo/36.png">
+<meta property="og:image" content="http://example.com/img/hexo/37.png">
+<meta property="og:image" content="http://example.com/img/hexo/38.png">
+<meta property="og:image" content="http://example.com/img/hexo/39.png">
+<meta property="og:image" content="http://example.com/img/hexo/40.png">
+<meta property="og:image" content="http://example.com/img/hexo/41.png">
 <meta property="article:published_time" content="2025-07-07T12:41:49.000Z">
-<meta property="article:modified_time" content="2025-08-11T01:19:09.477Z">
+<meta property="article:modified_time" content="2025-09-08T06:53:00.233Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="博客搭建">
 <meta property="article:tag" content="域名申请">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/static/img/hexo/1.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/hexo/1.png">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>Hexo + GitHub完成个人博客部署 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hexo + GitHub完成个人博客部署"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        long
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-07 20:41" pubdate>
+          July 7, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          3.7k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+          32 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-Hexo + GitHub完成个人博客部署" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T12:41:49.000Z" itemprop="datePublished">2025-07-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Hexo + GitHub完成个人博客部署
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><code>通常在线上部署个人博客需要租借云服务器，而通过借助Node.js特性以及GitHub Page的帮助，我们利用Hexo（一个基于 Node.js 的快速、简洁且高效的静态网站生成器）完成本地博客与静态资源的映射，将项目托管给GitHub，从而省下一笔租借云服务器的费用，Hexo的丰富生态也使得博客页面有了较大的定制化空间，这是我们选择使用Hexo + GitHub搭建个人博客的重要原因！</code></p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hexo + GitHub完成个人博客部署</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><code>通常在线上部署个人博客需要租借云服务器，而通过借助Node.js特性以及GitHub Page的帮助，我们利用Hexo（一个基于 Node.js 的快速、简洁且高效的静态网站生成器）完成本地博客与静态资源的映射，将项目托管给GitHub，从而省下一笔租借云服务器的费用，Hexo的丰富生态也使得博客页面有了较大的定制化空间，这是我们选择使用Hexo + GitHub搭建个人博客的重要原因！</code></p>
 <h1 id="1-环境准备工作"><a href="#1-环境准备工作" class="headerlink" title="1. 环境准备工作"></a>1. 环境准备工作</h1><p><strong>安装nvm，node.js，git</strong></p>
 <blockquote>
 <p>nvm是node.js版本管理工具（可以理解为node.js版的conda）；node.js使得JavaScript可以在服务端运行而不仅仅在浏览器，使得其可以用于开发后端服务，npm是node.js的包管理工具，类似于python环境中的pip；git用于与GitHub建立连接，通过配置密钥可以省略身份验证阶段，安全性更高的同时提高效率</p>
 </blockquote>
 <h2 id="1-1-nvm与node-js安装"><a href="#1-1-nvm与node-js安装" class="headerlink" title="1.1 nvm与node.js安装"></a>1.1 nvm与node.js安装</h2><p>nvm安装查询相关资料进行傻瓜式安装即可，当在命令提示符输入以下命令显示版本号即安装成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm version</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvm version<br></code></pre></td></tr></table></figure>
 
 <p>node.js可通过nvm直接安装，通过<a target="_blank" rel="noopener" href="https://nodejs.org/en/about/previous-releases">node.js版本</a> 查询可用版本，安装命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装v18的node.js</span></span><br><span class="line">nvm install 18</span><br><span class="line"><span class="comment"># 查询nvm拥有的node.js环境</span></span><br><span class="line">nvm list</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装v18的node.js</span><br>nvm install 18<br><span class="hljs-comment"># 查询nvm拥有的node.js环境</span><br>nvm list<br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/1.png" alt="image-20250623164606527" style="zoom: 50%;" />
+<img src="/img/hexo/1.png" srcset="/img/loading.gif" lazyload alt="image-20250623164606527" style="zoom: 50%;" />
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用指定版本的node.js环境</span></span><br><span class="line">nvm use 18.20.8</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启用指定版本的node.js环境</span><br>nvm use 18.20.8<br></code></pre></td></tr></table></figure>
 
 <h2 id="1-2-git配置"><a href="#1-2-git配置" class="headerlink" title="1.2 git配置"></a>1.2 git配置</h2><h3 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h3><blockquote>
 <p>访问GitHub时常会出现访问延时的情况，建议自己找到梯子，为git配置代理服务器</p>
 </blockquote>
 <p>梯子确保可用后，在系统此处可查看代理服务器地址</p>
-<img src="./static/img/hexo/2.png" alt="image-20250629150439961" style="zoom: 50%;" />
+<img src="/img/hexo/2.png" srcset="/img/loading.gif" lazyload alt="image-20250629150439961" style="zoom: 50%;" />
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过如下方式配置代理服务器地址</span></span><br><span class="line">git config --global http.proxy <span class="string">&#x27;http://代理服务器地址:端口&#x27;</span></span><br><span class="line">git config --global https.proxy <span class="string">&#x27;https://代理服务器地址:端口&#x27;</span></span><br><span class="line"><span class="comment"># 通过如下方式查询是否配置成功</span></span><br><span class="line">git config --global --get https.proxy</span><br><span class="line">git config --global --get http.proxy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 通过如下方式配置代理服务器地址</span><br>git config --global http.proxy <span class="hljs-string">&#x27;http://代理服务器地址:端口&#x27;</span><br>git config --global https.proxy <span class="hljs-string">&#x27;https://代理服务器地址:端口&#x27;</span><br><span class="hljs-comment"># 通过如下方式查询是否配置成功</span><br>git config --global --get https.proxy<br>git config --global --get http.proxy<br></code></pre></td></tr></table></figure>
 
 <h3 id="密钥配置"><a href="#密钥配置" class="headerlink" title="密钥配置"></a>密钥配置</h3><p>打开git bash并输入如下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;你的邮箱地址&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;你的邮箱地址&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>命令完成后若 <code>C:\Users\你的本机用户名\.ssh</code> 目录下拥有如下文件，说明本地私钥创建成功</p>
-<img src="./static/img/hexo/3.png" alt="image-20250623165204572" style="zoom:67%;" />
+<img src="/img/hexo/3.png" srcset="/img/loading.gif" lazyload alt="image-20250623165204572" style="zoom:67%;" />
 
 <p>启动 SSH 代理（ssh-agent）并将私钥添加到代理中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span> </span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(ssh-agent -s)</span>&quot;</span> <br>ssh-add ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure>
 
 <p>查看该私钥对应的公钥（以ssh-rsa开头，以邮箱地址结尾）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询私钥对应的公钥</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查询私钥对应的公钥</span><br><span class="hljs-built_in">cat</span> ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/4.png" alt="image-20250623165644488" style="zoom:67%;" />
+<img src="/img/hexo/4.png" srcset="/img/loading.gif" lazyload alt="image-20250623165644488" style="zoom:67%;" />
 
 <p>打开GitHub进入个人Setting界面，将查询到的公钥信息复制并添加</p>
-<img src="./static/img/hexo/5.png" alt="image-20250623165928605" style="zoom:50%;" />
+<img src="/img/hexo/5.png" srcset="/img/loading.gif" lazyload alt="image-20250623165928605" style="zoom:50%;" />
 
 <p>使用如下命令验证该环节是否成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/6.png" alt="image-20250623170124316" style="zoom:67%;" />
+<img src="/img/hexo/6.png" srcset="/img/loading.gif" lazyload alt="image-20250623170124316" style="zoom:67%;" />
 
 <h2 id="1-3-Hexo基本配置"><a href="#1-3-Hexo基本配置" class="headerlink" title="1.3 Hexo基本配置"></a>1.3 Hexo基本配置</h2><p>Hexo 是一个基于 Node.js 的快速、简洁且高效的静态网站生成器。它允许你使用 Markdown 或其他标记语言编写文章，然后通过简单的命令将其转换为静态 HTML 页面，适合用于搭建博客、项目文档、个人网站等。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接通过npm进行安装</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 初始化Hexo 项目，自动创建一个完整的博客目录结构，并安装必要的依赖文件</span></span><br><span class="line">hexo init</span><br><span class="line"><span class="comment"># 安装git自动部署发布hexo插件</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"><span class="comment"># 启动本地服务器，验证hexo是否安装成功</span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 直接通过npm进行安装</span><br>npm install -g hexo-cli<br><span class="hljs-comment"># 初始化Hexo 项目，自动创建一个完整的博客目录结构，并安装必要的依赖文件</span><br>hexo init<br><span class="hljs-comment"># 安装git自动部署发布hexo插件</span><br>npm install hexo-deployer-git --save<br><span class="hljs-comment"># 启动本地服务器，验证hexo是否安装成功</span><br>hexo server<br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/7.png" alt="image-20250623171307314" style="zoom:67%;" />
+<img src="/img/hexo/7.png" srcset="/img/loading.gif" lazyload alt="image-20250623171307314" style="zoom:67%;" />
 
-<img src="./static/img/hexo/8.png" alt="image-20250623171331262" style="zoom:50%;" />
+<img src="/img/hexo/8.png" srcset="/img/loading.gif" lazyload alt="image-20250623171331262" style="zoom:50%;" />
 
 <h1 id="2-利用GitHub管理"><a href="#2-利用GitHub管理" class="headerlink" title="2. 利用GitHub管理"></a>2. 利用GitHub管理</h1><h2 id="2-1-建立仓库，创建分支"><a href="#2-1-建立仓库，创建分支" class="headerlink" title="2.1 建立仓库，创建分支"></a>2.1 建立仓库，创建分支</h2><ol>
 <li><p>进入GitHub官网，创建一个新的仓库，仓库名称为“GitHub账号名.github.io”</p>
 <blockquote>
 <p>名称必须符合上述规则，否则可能会出错</p>
 </blockquote>
-<img src="./static/img/hexo/9.png" alt="image-20250629204150588" style="zoom: 50%;" />
+<img src="/img/hexo/9.png" srcset="/img/loading.gif" lazyload alt="image-20250629204150588" style="zoom: 50%;" />
 
-<p><img src="/./static/img/hexo/10.png" alt="image-20250629201442687"></p>
+<p><img src="/img/hexo/10.png" srcset="/img/loading.gif" lazyload alt="image-20250629201442687"></p>
 </li>
 <li><p>将该项目克隆至本地（点进仓库即可看见克隆地址）</p>
-<img src="./static/img/hexo/11.png" alt="image-20250629204842349" style="zoom:67%;" />
+<img src="/img/hexo/11.png" srcset="/img/loading.gif" lazyload alt="image-20250629204842349" style="zoom:67%;" />
 
 <p>在自定义的路径下，使用git工具完成项目克隆，未来在此项目下完成博客编写</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 上述地址👆</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> 上述地址👆<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>创建“code”分支，用于未来管理源码（否则当本地项目丢失后无法还原博客数据）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地创建code分支并完成分支切换（本地默认使用main分支）</span></span><br><span class="line">git checkout -b <span class="string">&quot;code&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 本地创建code分支并完成分支切换（本地默认使用main分支）</span><br>git checkout -b <span class="hljs-string">&quot;code&quot;</span><br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/12.png" alt="image-20250629203023711" style="zoom: 67%;" />
+<img src="/img/hexo/12.png" srcset="/img/loading.gif" lazyload alt="image-20250629203023711" style="zoom: 67%;" />
 
 <p>将本地分支推送至于远程，首次推送分支至远程需要本地内容有改动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个空文件（后续不需要可手动删除）</span></span><br><span class="line"><span class="built_in">touch</span> init.md</span><br><span class="line"><span class="comment"># 将当前目录下的文件添加进暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment"># 将暂存区内容纳入版本库管理</span></span><br><span class="line">git commit -m <span class="string">&quot;code分支初始化&quot;</span></span><br><span class="line"><span class="comment"># 推送新分支</span></span><br><span class="line">git push -u origin code</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建一个空文件（后续不需要可手动删除）</span><br><span class="hljs-built_in">touch</span> init.md<br><span class="hljs-comment"># 将当前目录下的文件添加进暂存区</span><br>git add .<br><span class="hljs-comment"># 将暂存区内容纳入版本库管理</span><br>git commit -m <span class="hljs-string">&quot;code分支初始化&quot;</span><br><span class="hljs-comment"># 推送新分支</span><br>git push -u origin code<br></code></pre></td></tr></table></figure>
 
 <p>通过GitHub仓库验证推送是否成功</p>
-<img src="./static/img/hexo/13.png" alt="image-20250629211413286" style="zoom:50%;" /></li>
+<img src="/img/hexo/13.png" srcset="/img/loading.gif" lazyload alt="image-20250629211413286" style="zoom:50%;" /></li>
 </ol>
 <h2 id="2-2-创建Hexo项目"><a href="#2-2-创建Hexo项目" class="headerlink" title="2.2 创建Hexo项目"></a>2.2 创建Hexo项目</h2><ol>
 <li><p>创建一个空文件夹，执行如下命令，完成博客项目的初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化Hexo 项目，自动创建一个完整的博客目录结构，并安装必要的依赖文件</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 初始化Hexo 项目，自动创建一个完整的博客目录结构，并安装必要的依赖文件</span><br>hexo init<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>打开 Hexo 项目下的 <code>_config.yml</code></p>
-<img src="./static/img/hexo/14.png" alt="image-20250623172228084" style="zoom:67%;" />
+<img src="/img/hexo/14.png" srcset="/img/loading.gif" lazyload alt="image-20250623172228084" style="zoom:67%;" />
 
 <p>拉至文件最下方，对相关内容进行修改</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/GitHub账号名/GitHub账号名.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Deployment</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/GitHub账号名/GitHub账号名.github.io</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="2-2-1-源码维护"><a href="#2-2-1-源码维护" class="headerlink" title="2.2.1 源码维护"></a>2.2.1 源码维护</h3><ol>
 <li><p>将该文件夹的所有内容剪切至我们本地的仓库下</p>
 <blockquote>
 <p>确保此时git属于code分支（在当前目录下打开git bash，若命令行处末尾显示code即说明当前处于code分支），若处于main分支则需要切换分支后再进行剪切，后续我们使用code分支完成源码的备份，使用main分支完成项目的静态资源维护</p>
 </blockquote>
-<img src="./static/img/hexo/15.png" alt="image-20250629212144974" style="zoom:67%;" />
+<img src="/img/hexo/15.png" srcset="/img/loading.gif" lazyload alt="image-20250629212144974" style="zoom:67%;" />
 </li>
 <li><p>将源码进行备份至GitHub仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将修改内容全部加入暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment"># 将暂存区内容送入版本库</span></span><br><span class="line">git commit -m <span class="string">&quot;博客源码备份1&quot;</span></span><br><span class="line"><span class="comment"># 推送至远程仓库</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将修改内容全部加入暂存区</span><br>git add .<br><span class="hljs-comment"># 将暂存区内容送入版本库</span><br>git commit -m <span class="hljs-string">&quot;博客源码备份1&quot;</span><br><span class="hljs-comment"># 推送至远程仓库</span><br>git push<br></code></pre></td></tr></table></figure>
 
 <p>此时可在 code 分支看见我们推送的数据</p>
-<img src="./static/img/hexo/16.png" alt="image-20250629213024701" style="zoom:67%;" /></li>
+<img src="/img/hexo/16.png" srcset="/img/loading.gif" lazyload alt="image-20250629213024701" style="zoom:67%;" /></li>
 </ol>
 <h3 id="2-2-1-静态资源维护"><a href="#2-2-1-静态资源维护" class="headerlink" title="2.2.1 静态资源维护"></a>2.2.1 静态资源维护</h3><ol>
 <li><p>安装hexo-deployer-git插件</p>
 <blockquote>
 <p>由于该插件是安装在本地的，因此每一个全新的hexo项目都需要重新安装</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装git自动部署工具</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装git自动部署工具</span><br>npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>执行Hexo自动部署的三个步骤</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理 Hexo 缓存</span></span><br><span class="line">hexo clean   </span><br><span class="line"><span class="comment"># 重新生成静态文件</span></span><br><span class="line">hexo generate  </span><br><span class="line"><span class="comment"># 完成本地项目部署至GitHub </span></span><br><span class="line"><span class="comment">#（由于在_config.yml中配置过，因此生成的静态资源会发布至main分支）</span></span><br><span class="line">hexo deploy    </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清理 Hexo 缓存</span><br>hexo clean   <br><span class="hljs-comment"># 重新生成静态文件</span><br>hexo generate  <br><span class="hljs-comment"># 完成本地项目部署至GitHub </span><br><span class="hljs-comment">#（由于在_config.yml中配置过，因此生成的静态资源会发布至main分支）</span><br>hexo deploy    <br></code></pre></td></tr></table></figure>
 </li>
 <li><p>此时可在main分支查看部署的具体资源情况</p>
-<img src="./static/img/hexo/17.png" alt="image-20250629215128189" style="zoom:67%;" />
+<img src="/img/hexo/17.png" srcset="/img/loading.gif" lazyload alt="image-20250629215128189" style="zoom:67%;" />
 
 <p>此时可以通过网址访问初始页面</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://你的GitHub账户名.github.io/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">https://你的GitHub账户名.github.io/<br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/18.png" alt="image-20250629215424932" style="zoom: 50%;" /></li>
+<img src="/img/hexo/18.png" srcset="/img/loading.gif" lazyload alt="image-20250629215424932" style="zoom: 50%;" /></li>
 </ol>
 <h2 id="2-3-后续维护"><a href="#2-3-后续维护" class="headerlink" title="2.3 后续维护"></a>2.3 后续维护</h2><p>总体而言，我们利用code分支管理项目源码，利用main分支管理静态页面。</p>
 <p>每次项目中的数据更新后，我们需要使用add，commit，push命令同步至code分支上。</p>
@@ -269,41 +450,41 @@
 <p>如果不希望自己的GitHub账号暴露在网址中，可以考虑申请租借域名，<a target="_blank" rel="noopener" href="https://buy.cloud.tencent.com/domain/price?type=overview">腾讯云</a>阿里云等平台都提供了此项服务</p>
 </blockquote>
 <h3 id="2-4-1-个人域名申请"><a href="#2-4-1-个人域名申请" class="headerlink" title="2.4.1 个人域名申请"></a>2.4.1 个人域名申请</h3><p>从经济实惠的角度考虑，选择.top后缀的域名即可，域名申请需要实名认证，可能需要半天左右的时间，具体的不再赘述，只需跟着系统指引即可</p>
-<img src="./static/img/hexo/19.png" alt="image-20250630204211025" style="zoom:67%;" />
+<img src="/img/hexo/19.png" srcset="/img/loading.gif" lazyload alt="image-20250630204211025" style="zoom:67%;" />
 
 <p>完成域名申请后，可在个人主页查询域名的具体情况，如下👇</p>
-<img src="./static/img/hexo/20.png" alt="image-20250630204451421" style="zoom:50%;" />
+<img src="/img/hexo/20.png" srcset="/img/loading.gif" lazyload alt="image-20250630204451421" style="zoom:50%;" />
 
 <h3 id="2-4-2-绑定GitHub-Page"><a href="#2-4-2-绑定GitHub-Page" class="headerlink" title="2.4.2 绑定GitHub Page"></a>2.4.2 绑定GitHub Page</h3><ol>
 <li><p>在博客项目的source文件夹下下创建“CNAME”文件，内容填写为自己的域名（如上即xxx.top，不要包含https，www以及斜杠部分）</p>
-<img src="./static/img/hexo/21.png" alt="image-20250702094707036" style="zoom: 67%;" />
+<img src="/img/hexo/21.png" srcset="/img/loading.gif" lazyload alt="image-20250702094707036" style="zoom: 67%;" />
 
 <p>使用add，commit，push老三样将新添的内容推送至code分支</p>
-<img src="./static/img/hexo/22.png" alt="image-20250630205441059" style="zoom:67%;" />
+<img src="/img/hexo/22.png" srcset="/img/loading.gif" lazyload alt="image-20250630205441059" style="zoom:67%;" />
 </li>
 <li><p>进入腾讯云的域名管理界面，点击需要目标域名的“解析”</p>
-<img src="./static/img/hexo/23.png" alt="image-20250701194319708" style="zoom:67%;" />
+<img src="/img/hexo/23.png" srcset="/img/loading.gif" lazyload alt="image-20250701194319708" style="zoom:67%;" />
 
 <p>点击“新手快速解析”</p>
-<img src="./static/img/hexo/24.png" alt="image-20250701194454790" style="zoom: 50%;" />
+<img src="/img/hexo/24.png" srcset="/img/loading.gif" lazyload alt="image-20250701194454790" style="zoom: 50%;" />
 
 <p>填写自己GitHub仓库的访问地址</p>
-<img src="./static/img/hexo/25.png" alt="image-20250701194713777" style="zoom: 50%;" />
+<img src="/img/hexo/25.png" srcset="/img/loading.gif" lazyload alt="image-20250701194713777" style="zoom: 50%;" />
 
 <p>完成后可看到如下两条记录，对腾讯云的操作到此结束</p>
-<img src="./static/img/hexo/26.png" alt="image-20250701194856377" style="zoom:50%;" />
+<img src="/img/hexo/26.png" srcset="/img/loading.gif" lazyload alt="image-20250701194856377" style="zoom:50%;" />
 </li>
 <li><p>进入GitHub仓库对应的Settings部分，选择Page选项，并将自己的域名填入保存</p>
-<img src="./static/img/hexo/27.png" alt="image-20250630205714086" style="zoom:67%;" />
+<img src="/img/hexo/27.png" srcset="/img/loading.gif" lazyload alt="image-20250630205714086" style="zoom:67%;" />
 
 <p>当出现如下标志时，说明域名与该项目成功绑定</p>
-<img src="./static/img/hexo/28.png" alt="image-20250701195148565" style="zoom:67%;" />
+<img src="/img/hexo/28.png" srcset="/img/loading.gif" lazyload alt="image-20250701195148565" style="zoom:67%;" />
 </li>
 <li><p>使用绑定的域名进行访问，成功跳转至我们自己的项目</p>
-<img src="./static/img/hexo/29.png" alt="image-20250701195253497" style="zoom:67%;" /></li>
+<img src="/img/hexo/29.png" srcset="/img/loading.gif" lazyload alt="image-20250701195253497" style="zoom:67%;" /></li>
 </ol>
 <h1 id="3-从使用的角度出发认识Hexo"><a href="#3-从使用的角度出发认识Hexo" class="headerlink" title="3. 从使用的角度出发认识Hexo"></a>3. 从使用的角度出发认识Hexo</h1><p>在Hexo生成的初始项目下，我们着重关注如下内容👇</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml <span class="comment"># 网站的配置文件，您可以在此配置大部分的参数。</span></span><br><span class="line">├── scaffolds	<span class="comment"># 模版文件夹，当新建文章时，Hexo会根据scaffold存储模板来创建文件。</span></span><br><span class="line">├── <span class="built_in">source</span>	<span class="comment"># 资源文件夹，用于存放用户资源</span></span><br><span class="line">|   ├── _drafts	<span class="comment"># 草稿文件，自动部署时此部分不会生成静态资源</span></span><br><span class="line">|   └── _posts	<span class="comment"># 文章文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">.<br>├── _config.yml <span class="hljs-comment"># 网站的配置文件，您可以在此配置大部分的参数。</span><br>├── scaffolds	<span class="hljs-comment"># 模版文件夹，当新建文章时，Hexo会根据scaffold存储模板来创建文件。</span><br>├── <span class="hljs-built_in">source</span>	<span class="hljs-comment"># 资源文件夹，用于存放用户资源</span><br>|   ├── _drafts	<span class="hljs-comment"># 草稿文件，自动部署时此部分不会生成静态资源</span><br>|   └── _posts	<span class="hljs-comment"># 文章文件</span><br></code></pre></td></tr></table></figure>
 
 <p>本节将对各部分作用进行解释，并展示常见的用法（更加详细的内容请看<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/">Hexo Fluid官方文档</a>），最后为项目换上较为流行的 Fluid 主题</p>
 <h2 id="3-1-config-yml"><a href="#3-1-config-yml" class="headerlink" title="3.1 _config.yml"></a>3.1 _config.yml</h2><p>该文件主要针对网页全体对象进行配置，如下👇</p>
@@ -323,7 +504,7 @@
 <td align="left">网站副标题（不同主题显示位置不一致）</td>
 </tr>
 </tbody></table>
-<img src="./static/img/hexo/30.png" alt="image-20250702095654608" style="zoom:67%;" />
+<img src="/img/hexo/30.png" srcset="/img/loading.gif" lazyload alt="image-20250702095654608" style="zoom:67%;" />
 
 <table>
 <thead>
@@ -334,7 +515,7 @@
 </thead>
 <tbody><tr>
 <td align="left"><code>description</code></td>
-<td align="left">网站描述（在搜索引擎搜索出来后展示的简短描述）<br /><img src="./static/img/hexo/31.png" alt="image-20250702100455980" style="zoom: 50%;" /></td>
+<td align="left">网站描述（在搜索引擎搜索出来后展示的简短描述）<br /><img src="/img/hexo/31.png" srcset="/img/loading.gif" lazyload alt="image-20250702100455980" style="zoom: 50%;" /></td>
 </tr>
 <tr>
 <td align="left"><code>keywords</code></td>
@@ -342,7 +523,7 @@
 </tr>
 <tr>
 <td align="left"><code>author</code></td>
-<td align="left">作者名称（网页左下角）<br /><img src="./static/img/hexo/32.png" alt="image-20250702100654273" style="zoom: 50%;" /></td>
+<td align="left">作者名称（网页左下角）<br /><img src="/img/hexo/32.png" srcset="/img/loading.gif" lazyload alt="image-20250702100654273" style="zoom: 50%;" /></td>
 </tr>
 <tr>
 <td align="left"><code>language</code></td>
@@ -375,32 +556,32 @@
 </tbody></table>
 <p>上述即为常用配置，需要完成更高等级的定制化请参考官方文档。</p>
 <p>由于分类页面与标签页面默认不支持分页，因此建议再加入如下配置，使得其拥有分页功能</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tag_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span>          <span class="comment"># 标签页分页设置（关键配置）</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span>       <span class="comment"># 按日期降序排列</span></span><br><span class="line"><span class="attr">category_generator:</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span>          <span class="comment"># 分类页单独设置分页数量</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span>       <span class="comment"># 按日期降序排列</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">tag_generator:</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span>          <span class="hljs-comment"># 标签页分页设置（关键配置）</span><br>  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span>       <span class="hljs-comment"># 按日期降序排列</span><br><span class="hljs-attr">category_generator:</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-number">10</span>          <span class="hljs-comment"># 分类页单独设置分页数量</span><br>  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span>       <span class="hljs-comment"># 按日期降序排列</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="3-2-scaffolds文件夹"><a href="#3-2-scaffolds文件夹" class="headerlink" title="3.2 scaffolds文件夹"></a>3.2 scaffolds文件夹</h2><p>初始情况下，Hexo为我们提供了三种模板</p>
-<img src="./static/img/hexo/33.png" alt="image-20250707203104866" style="zoom:50%;" />
+<img src="/img/hexo/33.png" srcset="/img/loading.gif" lazyload alt="image-20250707203104866" style="zoom:50%;" />
 
 <p>当创建一篇新文章时，我们需要用如下命令，这样创建出的文章会按照目录结构存放</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 其中layout取值即文件夹中的模板名称（draft，page，post）</span></span><br><span class="line"><span class="comment"># 根据需要选取即可，默认选取post（可通过config文件进行修改）</span></span><br><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 其中layout取值即文件夹中的模板名称（draft，page，post）</span><br><span class="hljs-comment"># 根据需要选取即可，默认选取post（可通过config文件进行修改）</span><br>hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure>
 
 <p><code>post.md文</code>件内部格式如下，即用该模板创建的文章会显式记录当前的标题以及文件创建日期，标签为空，后续可自由更改</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line"><span class="section">tags:</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br><span class="hljs-section">tags:</span><br><span class="hljs-section">---</span><br><br></code></pre></td></tr></table></figure>
 
 <p>创建后的文件存放在<code>source</code>文件夹的<code>_post</code>目录下</p>
-<img src="./static/img/hexo/34.png" alt="image-20250707204427194" style="zoom:67%;" />
+<img src="/img/hexo/34.png" srcset="/img/loading.gif" lazyload alt="image-20250707204427194" style="zoom:67%;" />
 
 <p>创建出的初始内容如下，<code>title</code>部分为传入参数，日期为创建时的日期。这部分信息在<code>Hexo</code>中称为<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Front-matter</a>，更多参数详情请见官方文档，此处仅介绍用法</p>
-<img src="./static/img/hexo/35.png" alt="image-20250707204704275" style="zoom:67%;" />
+<img src="/img/hexo/35.png" srcset="/img/loading.gif" lazyload alt="image-20250707204704275" style="zoom:67%;" />
 
 <p>当需要为文章划定分类或者添加标签时，在<code>Front-matter</code>中使用<code>tags</code>或<code>categories</code>关键字进行标签或者分类管理</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 说明当前文章有[日常,美食]两种标签，标签之间层次相同，因此顺序不重要</span></span><br><span class="line"><span class="comment"># 在URL上为：xxx/blog/tags/日常/post-title</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">日常</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">美食</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 说明当前文章有[日常,美食]两种标签，标签之间层次相同，因此顺序不重要</span><br><span class="hljs-comment"># 在URL上为：xxx/blog/tags/日常/post-title</span><br><span class="hljs-attr">tags:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">日常</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">美食</span><br></code></pre></td></tr></table></figure>
 
 <p>而分类之间根据写法的不同会有不同的层次关系</p>
 <p><strong>写法一</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此时Tennis与Baseball属于同一层级，当前文章同时隶属于这两个分类</span></span><br><span class="line"><span class="comment"># 在URL上为：xxx/categories/Tennis/post-title</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Tennis</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Baseball</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 此时Tennis与Baseball属于同一层级，当前文章同时隶属于这两个分类</span><br><span class="hljs-comment"># 在URL上为：xxx/categories/Tennis/post-title</span><br><span class="hljs-attr">categories:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Tennis</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Baseball</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>写法二</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种写法说明Baseball是Baseball是Sports的子类</span></span><br><span class="line"><span class="comment"># 在URL上为：xxx/categories/Sports/Baseball/post-title</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> [<span class="string">Sports</span>,<span class="string">Baseball</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 这种写法说明Baseball是Baseball是Sports的子类</span><br><span class="hljs-comment"># 在URL上为：xxx/categories/Sports/Baseball/post-title</span><br><span class="hljs-attr">categories:</span><br>  <span class="hljs-bullet">-</span> [<span class="hljs-string">Sports</span>,<span class="hljs-string">Baseball</span>]<br></code></pre></td></tr></table></figure>
 
 <p><code>个人认为最开始每篇文章的categories控制在一个即可，否则模糊了标签与分类的界限，后续熟悉了或者感觉确实有需要再进行操作。</code></p>
 <h2 id="3-3-source文件夹"><a href="#3-3-source文件夹" class="headerlink" title="3.3 source文件夹"></a>3.3 source文件夹</h2><blockquote>
@@ -424,175 +605,401 @@
 <p>各主题的迁移大同小异，此处以<code>Fluid</code>为例</p>
 <ol>
 <li><p>在博客目录下打开命令行，利用<code>npm</code>安装<code>fluid</code>主题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-theme-fluid</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure>
 
 <p>在<code>node_modules</code>文件夹下看见<code>hexo-theme-fluid</code>即安装成功</p>
-<img src="./static/img/hexo/36.png" alt="image-20250707223123613" style="zoom:67%;" />
+<img src="/img/hexo/36.png" srcset="/img/loading.gif" lazyload alt="image-20250707223123613" style="zoom:67%;" />
 </li>
 <li><p>进入<code>hexo-theme-fluid</code>文件夹，复制其<code>_config.yml</code>配置文件并将其重命名为<code>_config.fluid.yml</code>，移动至项目根目录</p>
-<img src="./static/img/hexo/37.png" alt="image-20250707223340557" style="zoom:50%;" />
+<img src="/img/hexo/37.png" srcset="/img/loading.gif" lazyload alt="image-20250707223340557" style="zoom:50%;" />
 </li>
 <li><p>打开<code>_config.yml</code>进行配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将主题进行修改</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">fluid</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 将主题进行修改</span><br><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br></code></pre></td></tr></table></figure>
 
 <p>此时在本地使用命令<code>hexo server</code>后已能顺利访问到修改后的主题</p>
-<img src="./static/img/hexo/38.png" alt="image-20250707223646403" style="zoom:50%;" />
+<img src="/img/hexo/38.png" srcset="/img/loading.gif" lazyload alt="image-20250707223646403" style="zoom:50%;" />
 </li>
 <li><p>创建“关于”界面</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首次应用主题需要手动进行创建，否则该连接无内容</span></span><br><span class="line">hexo new page <span class="string">&quot;关于本站&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 首次应用主题需要手动进行创建，否则该连接无内容</span><br>hexo new page <span class="hljs-string">&quot;关于本站&quot;</span><br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/hexo/39.png" alt="image-20250707230420537" style="zoom:50%;" /></li>
+<img src="/img/hexo/39.png" srcset="/img/loading.gif" lazyload alt="image-20250707230420537" style="zoom:50%;" /></li>
 </ol>
 <h2 id="3-5-更多定制化服务"><a href="#3-5-更多定制化服务" class="headerlink" title="3.5 更多定制化服务"></a>3.5 更多定制化服务</h2><p>一些细节的设置通过操作<code>_config.fluid.yml</code>与<code>_config.yml</code>实现，前者优先级更高，且配置文件内部几乎都有比较详尽的中文注释，根据需要进行修改即可，或参考<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/">Hexo Fluid配置指南</a></p>
 <p>例如需要修改背景图片，则定位至<code>node_modules\hexo-theme-fluid\source\img</code>路径下添加自己的图片并修改配置文件路径即可，此外还有诸多插件可以用于丰富主题内容，如背景音乐等，具体的情况可在网上查询相关资料进行添加。</p>
-<img src="./static/img/hexo/40.png" alt="image-20250708102053016" style="zoom:67%;" />
+<img src="/img/hexo/40.png" srcset="/img/loading.gif" lazyload alt="image-20250708102053016" style="zoom:67%;" />
 
-<img src="./static/img/hexo/41.png" alt="image-20250708102013453" style="zoom: 67%;" />
+<img src="/img/hexo/41.png" srcset="/img/loading.gif" lazyload alt="image-20250708102013453" style="zoom: 67%;" />
 
 <p>关于背景图片固定，毛玻璃背景特效等可参考👉<a target="_blank" rel="noopener" href="https://4rozen.github.io/archives/Hexo/60191.html">Hexo fluid 全屏背景图随日夜模式切换以及正文底页毛玻璃效果</a></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" data-id="cmfapt04j000094gn5pz1f03j" data-title="Hexo + GitHub完成个人博客部署" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/work/" class="category-chain-item">work</a>
   
-    <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Word文档自动化基础
-        
+  
+    <span>></span>
+    
+  <a href="/categories/work/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="category-chain-item">环境部署</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="print-no-link">#博客搭建</a>
+      
+        <a href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" class="print-no-link">#域名申请</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hexo + GitHub完成个人博客部署</div>
+      <div>http://example.com/2025/07/07/Hexo + GitHub完成个人博客部署/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>long</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 7, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" title="Word文档自动化基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Word文档自动化基础</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a></li></ul></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">Linux环境离线部署</a> <a href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 10px;">办公自动化</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" style="font-size: 10px;">域名申请</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">服务器离线环境部署指南</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/">Word文档自动化基础</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">Hexo + GitHub完成个人博客部署</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>

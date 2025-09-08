@@ -1,154 +1,335 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>服务器离线环境部署指南 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Linux服务器处于离线环境时，许多资源无法一步到位，需要手动部署相关依赖环境，过程繁琐且易遇到奇奇怪怪的问题，现将完美解决方案进行记录，便于后续有类似需求时提高处理效率">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="long">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux服务器处于离线环境时，许多资源无法一步到位，需要手动部署相关依赖环境，过程繁琐且易遇到奇奇怪怪的问题，现将完美解决方案进行记录，便于后续有类似需求时提高处理效率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器离线环境部署指南">
 <meta property="og:url" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Linux服务器处于离线环境时，许多资源无法一步到位，需要手动部署相关依赖环境，过程繁琐且易遇到奇奇怪怪的问题，现将完美解决方案进行记录，便于后续有类似需求时提高处理效率">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/1.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/2.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/3.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/4.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/5.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/6.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/7.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/8.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/9.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/10.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/11.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/12.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/13.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/14.png">
-<meta property="og:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/15.png">
+<meta property="og:image" content="http://example.com/img/server/1.png">
+<meta property="og:image" content="http://example.com/img/server/2.png">
+<meta property="og:image" content="http://example.com/img/server/3.png">
+<meta property="og:image" content="http://example.com/img/server/4.png">
+<meta property="og:image" content="http://example.com/img/server/5.png">
+<meta property="og:image" content="http://example.com/img/server/6.png">
+<meta property="og:image" content="http://example.com/img/server/7.png">
+<meta property="og:image" content="http://example.com/img/server/8.png">
+<meta property="og:image" content="http://example.com/img/server/9.png">
+<meta property="og:image" content="http://example.com/img/server/10.png">
+<meta property="og:image" content="http://example.com/img/server/11.png">
+<meta property="og:image" content="http://example.com/img/server/12.png">
+<meta property="og:image" content="http://example.com/img/server/13.png">
+<meta property="og:image" content="http://example.com/img/server/14.png">
+<meta property="og:image" content="http://example.com/img/server/15.png">
 <meta property="article:published_time" content="2025-07-31T09:17:50.000Z">
-<meta property="article:modified_time" content="2025-08-11T01:22:21.840Z">
+<meta property="article:modified_time" content="2025-09-08T06:51:49.167Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Linux环境离线部署">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/static/img/server/1.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/server/1.png">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>服务器离线环境部署指南 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="服务器离线环境部署指南"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        long
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-31 17:17" pubdate>
+          July 31, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          2.7k words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+          23 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-服务器离线环境部署指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" class="article-date">
-  <time class="dt-published" datetime="2025-07-31T09:17:50.000Z" itemprop="datePublished">2025-07-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      服务器离线环境部署指南
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-VSCode插件离线安装"><a href="#1-VSCode插件离线安装" class="headerlink" title="1. VSCode插件离线安装"></a>1. VSCode插件离线安装</h1><blockquote>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">服务器离线环境部署指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-VSCode插件离线安装"><a href="#1-VSCode插件离线安装" class="headerlink" title="1. VSCode插件离线安装"></a>1. VSCode插件离线安装</h1><blockquote>
 <p>VSCode下载地址：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></p>
 </blockquote>
 <p>插件安装包下载地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/">https://marketplace.visualstudio.com/</a></p>
 <blockquote>
 <p>若该地址下载的插件安装包无法正确安装，可以来到插件对应的GitHub地址进行下载后缀为.vsix的安装包，例子如下：</p>
 </blockquote>
-<img src="./static/img/server/1.png" alt="image-20250723181704821" style="zoom:50%;" />
+<img src="/img/server/1.png" srcset="/img/loading.gif" lazyload alt="image-20250723181704821" style="zoom:50%;" />
 
-<img src="./static/img/server/2.png" alt="image-20250723181736397" style="zoom:67%;" />
+<img src="/img/server/2.png" srcset="/img/loading.gif" lazyload alt="image-20250723181736397" style="zoom:67%;" />
 
-<img src="./static/img/server/3.png" alt="image-20250723181757154" style="zoom:50%;" />
+<img src="/img/server/3.png" srcset="/img/loading.gif" lazyload alt="image-20250723181757154" style="zoom:50%;" />
 
 <p>下载完安装包后，通过XFTP将文件传输至于服务器，接着直接安装即可</p>
-<img src="./static/img/server/4.png" alt="image-20250723181904627" style="zoom:67%;" />
+<img src="/img/server/4.png" srcset="/img/loading.gif" lazyload alt="image-20250723181904627" style="zoom:67%;" />
 
 <h1 id="2-局域网环境VSCode远程连接服务器"><a href="#2-局域网环境VSCode远程连接服务器" class="headerlink" title="2. 局域网环境VSCode远程连接服务器"></a>2. 局域网环境VSCode远程连接服务器</h1><h2 id="2-1-SSH服务安装"><a href="#2-1-SSH服务安装" class="headerlink" title="2.1 SSH服务安装"></a>2.1 SSH服务安装</h2><blockquote>
 <p>如果安装的是Ubuntu24.xx版本，系统设置内已自带SSH监听服务，只需要在设置界面打开即可</p>
 </blockquote>
-<img src="./static/img/server/5.png" alt="image-20250809205018125" style="zoom: 33%;" />
+<img src="/img/server/5.png" srcset="/img/loading.gif" lazyload alt="image-20250809205018125" style="zoom: 33%;" />
 
 <ol>
 <li><p>下载SSH服务所需的安装包（与系统版本对应）</p>
 <blockquote>
 <p>一个比较方便的方法是在Windows商店下载对应的Ubuntu系统，利用本地的网络环境执行如下命令</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载openssh-server及其依赖项</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install --download-only --reinstall -o Dir::Cache::archives=/mnt/d/apt_pkgs openssh-server -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载openssh-server及其依赖项</span><br><span class="hljs-built_in">sudo</span> apt-get install --download-only --reinstall -o Dir::Cache::archives=/mnt/d/apt_pkgs openssh-server -y<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>上传后执行安装命令</p>
 <blockquote>
 <p>Ubuntu系统安装该服务后续开机会自启动</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装目标路径下的所有.deb后缀安装包</span></span><br><span class="line">dpkg -i /目标路径/*.deb</span><br><span class="line"><span class="comment"># 防火墙允许22号端口通过</span></span><br><span class="line">ufw allow 22</span><br><span class="line"><span class="comment"># 启动SSH服务</span></span><br><span class="line">systemctl start ssh</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装目标路径下的所有.deb后缀安装包</span><br>dpkg -i /目标路径/*.deb<br><span class="hljs-comment"># 防火墙允许22号端口通过</span><br>ufw allow 22<br><span class="hljs-comment"># 启动SSH服务</span><br>systemctl start ssh<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="2-2-vscode本地服务器安装"><a href="#2-2-vscode本地服务器安装" class="headerlink" title="2.2 vscode本地服务器安装"></a>2.2 vscode本地服务器安装</h2><blockquote>
 <p>当VSCode开启SSH服务时，会在目标主机安装VScode本地服务器，作用是映射本地与远程的路径信息以及同步编辑行为等。在离线环境下，相关资源无法从互联网获取，因此需要手动进行干预</p>
@@ -158,9 +339,9 @@
 <blockquote>
 <p>可以理解为建立连接时的id信息</p>
 </blockquote>
-<img src="./static/img/server/6.png" alt="image-20250728102318409" style="zoom: 33%;" />
+<img src="/img/server/6.png" srcset="/img/loading.gif" lazyload alt="image-20250728102318409" style="zoom: 33%;" />
 
-<img src="./static/img/server/7.png" alt="image-20250728102419828" style="zoom: 50%;" />
+<img src="/img/server/7.png" srcset="/img/loading.gif" lazyload alt="image-20250728102419828" style="zoom: 50%;" />
 </li>
 <li><p>浏览器分别输入以下网址，进行文件下载并创建相应文件夹</p>
 <blockquote>
@@ -170,15 +351,15 @@
 <li><strong>vscode-server-linux-x64.tar</strong>：<code>https://update.code.visualstudio.com/commit:替换为自己的commit号/server-linux-x64/stable</code></li>
 <li><strong>vscode_cli_alpine_x64_cli.tar.gz</strong>：<code>https://update.code.visualstudio.com/commit:替换为自己的commit号/cli-alpine-x64/stable</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在用户目录下创建.vscode-server/cli/servers三个文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ~/.vscode-server/cli/servers</span><br><span class="line"><span class="comment"># 在servers文件夹下再创建Stable-&#123;commit_id&#125;文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> Stable-&#123;commit_id&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在用户目录下创建.vscode-server/cli/servers三个文件夹</span><br><span class="hljs-built_in">mkdir</span> -p ~/.vscode-server/cli/servers<br><span class="hljs-comment"># 在servers文件夹下再创建Stable-&#123;commit_id&#125;文件夹</span><br><span class="hljs-built_in">mkdir</span> Stable-&#123;commit_id&#125;<br></code></pre></td></tr></table></figure>
 
 <p>目录层级如下所示</p>
-<img src="./static/img/server/8.png" alt="image-20250728104413292" style="zoom:50%;" />
+<img src="/img/server/8.png" srcset="/img/loading.gif" lazyload alt="image-20250728104413292" style="zoom:50%;" />
 </li>
 <li><p>解压文件至指定目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将vscode-server-linux-x64.tar压缩包解压至刚刚创建的路径，commit_id进行相应替换</span></span><br><span class="line"><span class="comment"># 解压后的文件夹需要重命名为server</span></span><br><span class="line">tar -zxvf /目标路径/vscode-server-linux-x64.tar.gz -C ~/.vscode-server/cli/servers/Stable-&#123;commit_id&#125;</span><br><span class="line"><span class="comment"># 将vscode_cli_alpine_x64_cli.tar.gz压缩包（仅有code文件）解压到.vscode-server下</span></span><br><span class="line">tar -zxvf /目标路径/vscode_cli_alpine_x64_cli.tar.gz -C ~/.vscode-server</span><br><span class="line"><span class="comment"># 将文件命名为&quot;code-&#123;commit_id&#125;&quot;，如下👇</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将vscode-server-linux-x64.tar压缩包解压至刚刚创建的路径，commit_id进行相应替换</span><br><span class="hljs-comment"># 解压后的文件夹需要重命名为server</span><br>tar -zxvf /目标路径/vscode-server-linux-x64.tar.gz -C ~/.vscode-server/cli/servers/Stable-&#123;commit_id&#125;<br><span class="hljs-comment"># 将vscode_cli_alpine_x64_cli.tar.gz压缩包（仅有code文件）解压到.vscode-server下</span><br>tar -zxvf /目标路径/vscode_cli_alpine_x64_cli.tar.gz -C ~/.vscode-server<br><span class="hljs-comment"># 将文件命名为&quot;code-&#123;commit_id&#125;&quot;，如下👇</span><br></code></pre></td></tr></table></figure>
 
-<img src="./static/img/server/9.png" alt="image-20250728105124921" style="zoom:50%;" />
+<img src="/img/server/9.png" srcset="/img/loading.gif" lazyload alt="image-20250728105124921" style="zoom:50%;" />
 
 <p>由此即可完成vscode本地服务器配置</p>
 </li>
@@ -191,57 +372,57 @@
 </blockquote>
 <ol>
 <li><p>寻找拥有MiniConda且联网的Linux系统，创建初始环境并指定python版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建指定python版本且名为env_name的虚拟环境，安装conda-pack工具</span></span><br><span class="line">conda create --name env_name python=xxx conda-pack工具</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建指定python版本且名为env_name的虚拟环境，安装conda-pack工具</span><br>conda create --name env_name python=xxx conda-pack工具<br></code></pre></td></tr></table></figure>
 
 <p>将当前基础环境进行打包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打包env_name这个虚拟环境，只需将其解压至conda对应的envs目录下即可完成迁移</span></span><br><span class="line"><span class="comment"># 注意：打包的系统需要与虚拟环境的系统一致，否则环境无法兼容</span></span><br><span class="line">conda pack -n env_name -o env_name.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 打包env_name这个虚拟环境，只需将其解压至conda对应的envs目录下即可完成迁移</span><br><span class="hljs-comment"># 注意：打包的系统需要与虚拟环境的系统一致，否则环境无法兼容</span><br>conda pack -n env_name -o env_name.tar.gz<br></code></pre></td></tr></table></figure>
 
 <p>利用XFtp或其他的文件传输工具将工具传输至于离线服务器的<code>minicoda/envs</code>目录下，将当前环境进行解压到指定目录即可完成基础环境的迁移</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在minicoda/envs路径下创建env_name文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> -p env_name</span><br><span class="line"><span class="comment"># 解压虚拟环境</span></span><br><span class="line">tar -zxvf env_name.tar.gz -C env_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在minicoda/envs路径下创建env_name文件夹</span><br><span class="hljs-built_in">mkdir</span> -p env_name<br><span class="hljs-comment"># 解压虚拟环境</span><br>tar -zxvf env_name.tar.gz -C env_name<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>可在离线服务器中存放一个仅有python的库作为环境源，后续若是需要类似的python虚拟环境只需要复制<code>minicoda/envs</code>下的环境源文件夹即可</p>
 </blockquote>
 </li>
 <li><p>在自己的Windows电脑上安装相关依赖</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装Linux平台与python3.10匹配的requirements.txt涉及的二进制包(.whl)到当前的offline文件夹中</span></span><br><span class="line">pip download -r requirements.txt -d ./offline/ --platform manylinux2014_x86_64 --python-version <span class="number">3.10</span>  --only-binary=:<span class="built_in">all</span>:</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若只想单独安装某第三方库，则使用如下命令</span></span><br><span class="line"><span class="comment"># 安装Linux平台与python3.10匹配的的pandas及其相关依赖的二进制包(.whl)到当前的offline文件夹中</span></span><br><span class="line">pip download pandas -d ./offline/ --platform manylinux2014_x86_64 --python-version <span class="number">3.10</span>  --only-binary=:<span class="built_in">all</span>:   </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 安装Linux平台与python3.10匹配的requirements.txt涉及的二进制包(.whl)到当前的offline文件夹中</span><br>pip download -r requirements.txt -d ./offline/ --platform manylinux2014_x86_64 --python-version <span class="hljs-number">3.10</span>  --only-binary=:<span class="hljs-built_in">all</span>:<br><br><span class="hljs-comment"># 若只想单独安装某第三方库，则使用如下命令</span><br><span class="hljs-comment"># 安装Linux平台与python3.10匹配的的pandas及其相关依赖的二进制包(.whl)到当前的offline文件夹中</span><br>pip download pandas -d ./offline/ --platform manylinux2014_x86_64 --python-version <span class="hljs-number">3.10</span>  --only-binary=:<span class="hljs-built_in">all</span>:   <br></code></pre></td></tr></table></figure>
 
 <p>将offline文件夹压缩传送至离线服务器</p>
 </li>
 <li><p>离线服务器安装依赖</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换至目标虚拟环境</span></span><br><span class="line">conda activate env_name</span><br><span class="line"><span class="comment"># 根据当前的依赖生成requirements.txt文件</span></span><br><span class="line"><span class="built_in">ls</span> ./offline/*.whl &gt; requirements.txt</span><br><span class="line"><span class="comment"># 安装所有依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换至目标虚拟环境</span><br>conda activate env_name<br><span class="hljs-comment"># 根据当前的依赖生成requirements.txt文件</span><br><span class="hljs-built_in">ls</span> ./offline/*.whl &gt; requirements.txt<br><span class="hljs-comment"># 安装所有依赖</span><br>pip install -r requirements.txt<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="4-Linux常用命令"><a href="#4-Linux常用命令" class="headerlink" title="4.Linux常用命令"></a>4.Linux常用命令</h1><h2 id="4-1-下载安装"><a href="#4-1-下载安装" class="headerlink" title="4.1 下载安装"></a>4.1 下载安装</h2><p><strong>apt软件包</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="comment"># 确保本地系统环境足够干净，否则依赖下载不全</span></span><br><span class="line"><span class="comment"># 下载软件包到指定目录</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install --download-only --reinstall  -o Dir::Cache::archives=存储地址 包名 -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装软件对应的所有.deb</span></span><br><span class="line"><span class="built_in">sudo</span> dpkg -i ./*deb</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-comment"># 确保本地系统环境足够干净，否则依赖下载不全</span><br><span class="hljs-comment"># 下载软件包到指定目录</span><br><span class="hljs-built_in">sudo</span> apt-get install --download-only --reinstall  -o Dir::Cache::archives=存储地址 包名 -y<br><br><span class="hljs-comment"># 安装软件对应的所有.deb</span><br><span class="hljs-built_in">sudo</span> dpkg -i ./*deb<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>由于deb安装并不会判断依赖关系，因此初次安装有些依赖可能装不上，只需要再次执行即可</p>
 </blockquote>
 <p><strong>conda环境</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地的虚拟环境打包（直接解压至miniconda的envs的空目录下就可以使用）</span></span><br><span class="line">conda pack -n your_env_name -o your_env_name.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将本地的虚拟环境打包（直接解压至miniconda的envs的空目录下就可以使用）</span><br>conda pack -n your_env_name -o your_env_name.tar.gz<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-2-防火墙"><a href="#4-2-防火墙" class="headerlink" title="4.2 防火墙"></a>4.2 防火墙</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看防火墙当前存在的规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw status numbered</span><br><span class="line"><span class="comment"># 开放xx端口</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow xx</span><br><span class="line"><span class="comment"># xx端口禁止通行</span></span><br><span class="line"><span class="built_in">sudo</span> ufw deny xx</span><br><span class="line"><span class="comment"># 删除某条规则[最左侧的序号]</span></span><br><span class="line"><span class="built_in">sudo</span> ufw delete xx</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br><span class="line"><span class="comment"># 禁用/启用防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">disable</span>/enable </span><br></pre></td></tr></table></figure>
+<h2 id="4-2-防火墙"><a href="#4-2-防火墙" class="headerlink" title="4.2 防火墙"></a>4.2 防火墙</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看防火墙当前存在的规则</span><br><span class="hljs-built_in">sudo</span> ufw status numbered<br><span class="hljs-comment"># 开放xx端口</span><br><span class="hljs-built_in">sudo</span> ufw allow xx<br><span class="hljs-comment"># xx端口禁止通行</span><br><span class="hljs-built_in">sudo</span> ufw deny xx<br><span class="hljs-comment"># 删除某条规则[最左侧的序号]</span><br><span class="hljs-built_in">sudo</span> ufw delete xx<br><span class="hljs-comment"># 重启防火墙</span><br><span class="hljs-built_in">sudo</span> ufw reload<br><span class="hljs-comment"># 禁用/启用防火墙</span><br><span class="hljs-built_in">sudo</span> ufw <span class="hljs-built_in">disable</span>/enable <br></code></pre></td></tr></table></figure>
 
 <h2 id="4-3-权限"><a href="#4-3-权限" class="headerlink" title="4.3 权限"></a>4.3 权限</h2><blockquote>
 <p>通过 <code>chmod</code> 指令，可以修改<strong>文件或目录</strong>的权限</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u：文件所有者		g：文件的组		o：其他人		a：所有用户【u,g,o的总和】</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">u：文件所有者		g：文件的组		o：其他人		a：所有用户【u,g,o的总和】<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>方式一：字母加符号👉+，-，&#x3D; 变更权限</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给文件所有者赋予rwx权限，所有组赋予rx权限，其他人赋予x权限</span></span><br><span class="line">chmod u=rwx,g=rx,o=x 文件/目录名</span><br><span class="line"><span class="comment"># 给其他人增加此文件的w权限</span></span><br><span class="line">chmod o+w 文件/目录名</span><br><span class="line"><span class="comment"># 删除所有人对此文件的x权限【可执行权限】</span></span><br><span class="line">chmod a-x 文件/目录名</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 给文件所有者赋予rwx权限，所有组赋予rx权限，其他人赋予x权限</span><br>chmod u=rwx,g=rx,o=x 文件/目录名<br><span class="hljs-comment"># 给其他人增加此文件的w权限</span><br>chmod o+w 文件/目录名<br><span class="hljs-comment"># 删除所有人对此文件的x权限【可执行权限】</span><br>chmod a-x 文件/目录名<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>方式二：数字加符号👉+，-，&#x3D; 变更权限</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二进制数，0-7能囊括所有权限组合【0是无权限】</span></span><br><span class="line">r=<span class="number">4</span>		w=<span class="number">2</span>		x=<span class="number">1</span></span><br><span class="line"><span class="comment"># 给文件所有者赋予rwx权限(7)，所有组赋予rx权限(5)，其他人赋予x权限(1)</span></span><br><span class="line">chmod <span class="number">751</span> 文件/目录名</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 二进制数，0-7能囊括所有权限组合【0是无权限】</span><br>r=<span class="hljs-number">4</span>		w=<span class="hljs-number">2</span>		x=<span class="hljs-number">1</span><br><span class="hljs-comment"># 给文件所有者赋予rwx权限(7)，所有组赋予rx权限(5)，其他人赋予x权限(1)</span><br>chmod <span class="hljs-number">751</span> 文件/目录名<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="4-4-服务管理"><a href="#4-4-服务管理" class="headerlink" title="4.4 服务管理"></a>4.4 服务管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置服务开机启动/关闭服务开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span>/disable 服务名</span><br><span class="line"><span class="comment"># 查询某个服务是否是自启动的</span></span><br><span class="line">systemctl is-enabled 服务名</span><br><span class="line"><span class="comment"># 查看服务当前状态[start,stop,restart]</span></span><br><span class="line">systemctl status 服务器</span><br></pre></td></tr></table></figure>
+<h2 id="4-4-服务管理"><a href="#4-4-服务管理" class="headerlink" title="4.4 服务管理"></a>4.4 服务管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 设置服务开机启动/关闭服务开机启动</span><br>systemctl <span class="hljs-built_in">enable</span>/disable 服务名<br><span class="hljs-comment"># 查询某个服务是否是自启动的</span><br>systemctl is-enabled 服务名<br><span class="hljs-comment"># 查看服务当前状态[start,stop,restart]</span><br>systemctl status 服务器<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-5-文件"><a href="#4-5-文件" class="headerlink" title="4.5 文件"></a>4.5 文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归复制</span></span><br><span class="line"><span class="built_in">cp</span> -r <span class="built_in">source</span> dest</span><br><span class="line"><span class="comment"># 创建多级文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> -p xxx</span><br></pre></td></tr></table></figure>
+<h2 id="4-5-文件"><a href="#4-5-文件" class="headerlink" title="4.5 文件"></a>4.5 文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 递归复制</span><br><span class="hljs-built_in">cp</span> -r <span class="hljs-built_in">source</span> dest<br><span class="hljs-comment"># 创建多级文件夹</span><br><span class="hljs-built_in">mkdir</span> -p xxx<br></code></pre></td></tr></table></figure>
 
 <h2 id="4-6-磁盘"><a href="#4-6-磁盘" class="headerlink" title="4.6 磁盘"></a>4.6 磁盘</h2><p><strong>永久挂载外接硬盘</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有存储设备及分区，定位到需要挂载的设备并记住UUID与文件系统类型</span></span><br><span class="line">lsblk -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将存储设备sda3挂载到/mnt/storage4T【文件系统为ext4是设备】</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/fstab</span><br><span class="line"><span class="comment">########</span></span><br><span class="line"><span class="comment"># 在文件尾部添加如下内容，并保存退出</span></span><br><span class="line">UUID=xxx /mnt/storage4T ext4 defaults 0 2</span><br><span class="line"><span class="comment">#UUID=你的UUID 挂载位置 文件系统类型 defaults 0 2</span></span><br><span class="line"><span class="comment">########</span></span><br><span class="line"><span class="comment"># 配置生效</span></span><br><span class="line"><span class="built_in">sudo</span> mount -a</span><br><span class="line">systemctl daemon-reload</span><br><span class="line"><span class="comment"># 查看是否挂载成功，接着重启验证</span></span><br><span class="line"><span class="built_in">df</span> -h  </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有存储设备及分区，定位到需要挂载的设备并记住UUID与文件系统类型</span><br>lsblk -f<br><br><span class="hljs-comment"># 将存储设备sda3挂载到/mnt/storage4T【文件系统为ext4是设备】</span><br><span class="hljs-built_in">sudo</span> vim /etc/fstab<br><span class="hljs-comment">########</span><br><span class="hljs-comment"># 在文件尾部添加如下内容，并保存退出</span><br>UUID=xxx /mnt/storage4T ext4 defaults 0 2<br><span class="hljs-comment">#UUID=你的UUID 挂载位置 文件系统类型 defaults 0 2</span><br><span class="hljs-comment">########</span><br><span class="hljs-comment"># 配置生效</span><br><span class="hljs-built_in">sudo</span> mount -a<br>systemctl daemon-reload<br><span class="hljs-comment"># 查看是否挂载成功，接着重启验证</span><br><span class="hljs-built_in">df</span> -h  <br></code></pre></td></tr></table></figure>
 
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关机</span></span><br><span class="line">init 0</span><br><span class="line"><span class="comment"># 查看80端口占用情况</span></span><br><span class="line">lsof -i :80</span><br><span class="line"><span class="comment"># 查询系统架构</span></span><br><span class="line"><span class="built_in">uname</span> -m</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 关机</span><br>init 0<br><span class="hljs-comment"># 查看80端口占用情况</span><br>lsof -i :80<br><span class="hljs-comment"># 查询系统架构</span><br><span class="hljs-built_in">uname</span> -m<br></code></pre></td></tr></table></figure>
 
 <h1 id="5-显卡工具及驱动安装"><a href="#5-显卡工具及驱动安装" class="headerlink" title="5. 显卡工具及驱动安装"></a>5. 显卡工具及驱动安装</h1><blockquote>
 <p>若要在算法中使用Nvidia显卡，驱动以及CUDA工具必不可少</p>
@@ -250,21 +431,21 @@
 <blockquote>
 <p>直接搜索CUDA Toolkit对应版本进入官网选配即可，通常12.8比较是主流的版本</p>
 </blockquote>
-<img src="./static/img/server/10.png" alt="image-20250806151524557" style="zoom: 50%;" />
+<img src="/img/server/10.png" srcset="/img/loading.gif" lazyload alt="image-20250806151524557" style="zoom: 50%;" />
 
-<img src="./static/img/server/11.png" alt="image-20250806152023220" style="zoom:50%;" />
+<img src="/img/server/11.png" srcset="/img/loading.gif" lazyload alt="image-20250806152023220" style="zoom:50%;" />
 
 <p>👆选配后往下滑，可看见对应的下载地址👇</p>
-<img src="./static/img/server/12.png" alt="image-20250806152222010" style="zoom:50%;" />
+<img src="/img/server/12.png" srcset="/img/loading.gif" lazyload alt="image-20250806152222010" style="zoom:50%;" />
 
 <p>安装前需要确保服务器拥有gcc，g++，make，binutils软件包（使用apt下载），先安装gcc再安装g++，顺序错了会导致gcc某些包安装失败，此时需要手动软链接cc工具</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 手动创建cc到gcc的软链接【确保gcc已安装】</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/gcc /usr/bin/cc</span><br><span class="line"><span class="comment"># 先安装gcc能查询到说明安装</span></span><br><span class="line">cc --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 手动创建cc到gcc的软链接【确保gcc已安装】</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">ln</span> -s /usr/bin/gcc /usr/bin/cc<br><span class="hljs-comment"># 先安装gcc能查询到说明安装</span><br>cc --version<br></code></pre></td></tr></table></figure>
 
 <p>赋予安装包执行权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 到指定目录下执行，赋予执行权限</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x ./cuda_12.8.0_570.86.10_linux.run</span><br><span class="line"><span class="comment"># 关闭图形化界面【显卡驱动安装必须关闭图形化界面】</span></span><br><span class="line"><span class="comment"># 该命令黑屏时按快捷键Ctrl+Alt+F2~F6切换至于其他文本终端</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl isolate multi-user.target</span><br><span class="line"><span class="comment"># 执行安装包</span></span><br><span class="line"><span class="built_in">sudo</span> ./cuda_12.8.0_570.86.10_linux.run</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 到指定目录下执行，赋予执行权限</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> +x ./cuda_12.8.0_570.86.10_linux.run<br><span class="hljs-comment"># 关闭图形化界面【显卡驱动安装必须关闭图形化界面】</span><br><span class="hljs-comment"># 该命令黑屏时按快捷键Ctrl+Alt+F2~F6切换至于其他文本终端</span><br><span class="hljs-built_in">sudo</span> systemctl isolate multi-user.target<br><span class="hljs-comment"># 执行安装包</span><br><span class="hljs-built_in">sudo</span> ./cuda_12.8.0_570.86.10_linux.run<br></code></pre></td></tr></table></figure>
 
 <p>安装过程依照系统提示即可，其中X代表选择，空白代表没选中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置环境变量</span></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="comment">##############</span></span><br><span class="line"><span class="comment"># 在~/.bashrc末尾添加如下内容</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/local/cuda-12.8/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="comment">############</span></span><br><span class="line"><span class="comment"># 刷新环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="comment"># 若有对应版本输出则安装成功</span></span><br><span class="line">nvidia-smi</span><br><span class="line">nvcc --version</span><br><span class="line"><span class="comment"># 切换为图形模式</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl isolate graphical.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置环境变量</span><br>vim ~/.bashrc<br><span class="hljs-comment">##############</span><br><span class="hljs-comment"># 在~/.bashrc末尾添加如下内容</span><br><span class="hljs-built_in">export</span> PATH=/usr/local/cuda-12.8/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span><br><span class="hljs-comment">############</span><br><span class="hljs-comment"># 刷新环境变量</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br><span class="hljs-comment"># 若有对应版本输出则安装成功</span><br>nvidia-smi<br>nvcc --version<br><span class="hljs-comment"># 切换为图形模式</span><br><span class="hljs-built_in">sudo</span> systemctl isolate graphical.target<br></code></pre></td></tr></table></figure>
 
 <h1 id="6-Ubuntu系统重装"><a href="#6-Ubuntu系统重装" class="headerlink" title="6. Ubuntu系统重装"></a>6. Ubuntu系统重装</h1><blockquote>
 <p>准备好一个16GB以上的空U盘！若系统卡死，则同时按住Ctrl + Alt，接着依次按PriSc，R，E，I，S，U，B即可完成安全重启</p>
@@ -273,13 +454,13 @@
 <li><p>在清华镜像源下载所需版本的系统资源（<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/">Ubuntu</a>），选择<code>desktop-amd64.iso</code>结尾的文件下载</p>
 </li>
 <li><p>下载系统启动盘构造工具<a target="_blank" rel="noopener" href="https://filehippo.com/download_ultra-iso/post_download/?dt=internalDownload">UltraISO</a>，双击安装，选择默认选项即可，安装完成启动后，选择“继续试用”</p>
-<img src="./static/img/server/13.png" alt="image-20250805090644910" style="zoom:33%;" />
+<img src="/img/server/13.png" srcset="/img/loading.gif" lazyload alt="image-20250805090644910" style="zoom:33%;" />
 </li>
 <li><p>点击“文件”–&gt;“打开”，选择自己的在第1步下载的ISO系统镜像路径，接着点击“启动”–&gt;”写入硬盘映像”</p>
-<img src="./static/img/server/14.png" alt="image-20250805092442965" style="zoom:33%;" />
+<img src="/img/server/14.png" srcset="/img/loading.gif" lazyload alt="image-20250805092442965" style="zoom:33%;" />
 </li>
 <li><p>选择本地空U盘路径，点击“格式化”，再点击“写入”</p>
-<img src="./static/img/server/15.png" alt="image-20250805093307182" style="zoom: 33%;" />
+<img src="/img/server/15.png" srcset="/img/loading.gif" lazyload alt="image-20250805093307182" style="zoom: 33%;" />
 </li>
 <li><p>将U盘插入主机，开机过程中来回按F12，直至进入BIOS系统，选择使用U盘启动</p>
 </li>
@@ -291,156 +472,381 @@
 <li><p>同时按住Ctrl + Alt，接着依次按PriSc，R，E，I，S，U，B完成安全重启</p>
 </li>
 <li><p>重启过程中选择“Ubuntu 高级选项”–&gt;”recovery mode”，加载完毕后选择”root”选项进入，在命令行输入如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vi /etc/default/grub</span><br><span class="line"><span class="comment"># 按i进入编辑模式，将GRUB_CMDLINE_LINUX_DEFAULT修改为如下内容后保存退出</span></span><br><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=<span class="string">&quot;quiet splash nomodeset&quot;</span></span><br><span class="line"><span class="built_in">sudo</span> update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vi /etc/default/grub<br><span class="hljs-comment"># 按i进入编辑模式，将GRUB_CMDLINE_LINUX_DEFAULT修改为如下内容后保存退出</span><br>GRUB_CMDLINE_LINUX_DEFAULT=<span class="hljs-string">&quot;quiet splash nomodeset&quot;</span><br><span class="hljs-built_in">sudo</span> update-grub<br>reboot<br></code></pre></td></tr></table></figure></li>
 </ol>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" data-id="cmfapt050000h94gn7ow336v8" data-title="服务器离线环境部署指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/work/" class="category-chain-item">work</a>
   
-    <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
+  
+    <span>></span>
+    
+  <a href="/categories/work/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="category-chain-item">环境部署</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" class="print-no-link">#Linux环境离线部署</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>服务器离线环境部署指南</div>
+      <div>http://example.com/2025/07/31/服务器离线环境部署指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>long</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 31, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/" title="wsl子系统重装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">wsl子系统重装</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" title="Word文档自动化基础">
+                        <span class="hidden-mobile">Word文档自动化基础</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Word文档自动化基础</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a></li></ul></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">Linux环境离线部署</a> <a href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 10px;">办公自动化</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" style="font-size: 10px;">域名申请</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">服务器离线环境部署指南</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/">Word文档自动化基础</a>
-          </li>
-        
-          <li>
-            <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">Hexo + GitHub完成个人博客部署</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
