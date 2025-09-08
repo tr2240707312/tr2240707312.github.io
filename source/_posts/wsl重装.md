@@ -1,3 +1,14 @@
+---
+title: wsl子系统重装
+date: 2025-09-08 10:20:49
+excerpt: 记录如何卸载重装wsl子系统
+sticky: 
+tags:
+  - 子系统重装
+categories:
+  - [work,子系统重装]
+---
+
 ```powershell
 # 卸载wsl子系统
 wsl --unregister Ubuntu-24.04

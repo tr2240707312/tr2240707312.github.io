@@ -5,7 +5,7 @@ excerpt: 第三方库python-docx可以实现word的简单自动化，面对Excel
 tags:
   - 办公自动化
 categories:
-  - [学习,Python第三方库]
+  - [work,Python第三方库]
 ---
 
 # 1. 基本介绍
