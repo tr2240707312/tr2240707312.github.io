@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Word文档自动化基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="第三方库python-docx可以实现word的简单自动化，面对Excel数据需要按照一定格式大量转换为Word文档的需求时，掌握此项技术可以大大提高效率！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Word文档自动化基础">
+<meta property="og:url" content="http://example.com/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第三方库python-docx可以实现word的简单自动化，面对Excel数据需要按照一定格式大量转换为Word文档的需求时，掌握此项技术可以大大提高效率！">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-13T13:54:21.000Z">
+<meta property="article:modified_time" content="2025-08-11T00:25:24.645Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="办公自动化">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Word文档自动化基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2025-07-13T13:54:21.000Z" itemprop="datePublished">2025-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Word文档自动化基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h1><blockquote>
+<p><code>python-docx</code>是用于创建和修改 Microsoft Word（.docx）文件的 Python 第三方库。通过它，你能够以编程方式生成 Word 文档，添加文本、表格、图像、样式等元素</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx <span class="keyword">import</span> Document</span><br><span class="line"><span class="comment"># 我们通过这一方法创建文档对象，后续操作皆以该对象为出发点</span></span><br><span class="line">doc = Document()</span><br><span class="line"><span class="comment"># 此时是读取path路径现有的文档对象</span></span><br><span class="line">doc = Document(path)</span><br><span class="line"><span class="comment"># 保存文档</span></span><br><span class="line">doc.save(path)</span><br></pre></td></tr></table></figure>
+
+<p>word中常见的操作：添加标题（add_heading），添加正文（add_paragraph），添加表格（add_table）</p>
+<h1 id="2-文本块Run"><a href="#2-文本块Run" class="headerlink" title="2. 文本块Run"></a>2. 文本块Run</h1><p>文本块Run对象是通过add_run()返回的对象，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">head = doc.add_heading()</span><br><span class="line"><span class="comment"># 得到run对象，paragraph同理</span></span><br><span class="line">run = head.add_run()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 表格的run对象以单元格为单位</span></span><br><span class="line">table = doc.add_table(rows=<span class="number">2</span>, cols=<span class="number">2</span>,style=<span class="string">&#x27;Table Grid&#x27;</span>)</span><br><span class="line"><span class="comment"># 访问第一行第一列单元格的第一个段落的第一个 Run</span></span><br><span class="line">cell = table.cell(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 得到单元格内容首段的run对象</span></span><br><span class="line">run = cell.paragraphs[<span class="number">0</span>].add_run()</span><br></pre></td></tr></table></figure>
+
+<p>通过Run对象，我们可以对文本进行多种定制化操作，例如字体样式，字体大小&#x2F;颜色，对齐方式等等，每使用一次add_run()就在原先模块的基础上追加了新的文本</p>
+<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><blockquote>
+<p>确保文本是<code>add_run</code>添加的</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.oxml.ns <span class="keyword">import</span> qn</span><br><span class="line"><span class="comment"># 英文字体设置</span></span><br><span class="line">run.font.name = <span class="string">&#x27;黑体&#x27;</span></span><br><span class="line"><span class="comment"># 中文字体设置</span></span><br><span class="line">run._element.rPr.rFonts.<span class="built_in">set</span>(qn(<span class="string">&#x27;w:eastAsia&#x27;</span>), <span class="string">&#x27;微软雅黑&#x27;</span>) </span><br></pre></td></tr></table></figure>
+
+<h2 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a>字体大小</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Pt</span><br><span class="line"><span class="comment"># 12磅字体</span></span><br><span class="line">run.font.size = Pt(<span class="number">12</span>)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> RGBColor</span><br><span class="line"><span class="comment"># 红色</span></span><br><span class="line">run.font.color.rgb = RGBColor(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="粗体、斜体、下划线"><a href="#粗体、斜体、下划线" class="headerlink" title="粗体、斜体、下划线"></a>粗体、斜体、下划线</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 粗体</span></span><br><span class="line">run.bold = <span class="literal">True</span>     </span><br><span class="line"><span class="comment"># 斜体</span></span><br><span class="line">run.italic = <span class="literal">True</span>     </span><br><span class="line"><span class="comment"># 下划线</span></span><br><span class="line">run.underline = <span class="literal">True</span>   </span><br></pre></td></tr></table></figure>
+
+<h1 id="2-标题相关操作"><a href="#2-标题相关操作" class="headerlink" title="2. 标题相关操作"></a>2. 标题相关操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加标题，默认为一级标题，text推荐在run中添加，这样可以自定义样式</span></span><br><span class="line">heading = doc.add_heading(text,level=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>标题对齐</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.enum.text <span class="keyword">import</span> WD_ALIGN_PARAGRAPH</span><br><span class="line"><span class="comment"># 居中对齐</span></span><br><span class="line">heading.alignment = WD_ALIGN_PARAGRAPH.CENTER  </span><br></pre></td></tr></table></figure>
+
+<p><strong>标题前后间距</strong></p>
+<blockquote>
+<p>借助段落相关API实现</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 段前间距12磅</span></span><br><span class="line">heading.paragraph_format.space_before = Pt(<span class="number">12</span>)  </span><br><span class="line"><span class="comment"># 段后间距6磅</span></span><br><span class="line">heading.paragraph_format.space_after = Pt(<span class="number">6</span>)   </span><br></pre></td></tr></table></figure>
+
+<h1 id="3-段落相关操作"><a href="#3-段落相关操作" class="headerlink" title="3. 段落相关操作"></a>3. 段落相关操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建空段落，后续通过run添加内容</span></span><br><span class="line">p = doc.add_paragraph()</span><br></pre></td></tr></table></figure>
+
+<h2 id="段落对齐方式"><a href="#段落对齐方式" class="headerlink" title="段落对齐方式"></a>段落对齐方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置段落对齐方式，JUSTIFY是两端对齐</span></span><br><span class="line"><span class="keyword">from</span> docx.enum.text <span class="keyword">import</span> WD_ALIGN_PARAGRAPH</span><br><span class="line">p.alignment = WD_ALIGN_PARAGRAPH.CENTER  <span class="comment"># 居中对齐</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="缩进设置"><a href="#缩进设置" class="headerlink" title="缩进设置"></a>缩进设置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Cm</span><br><span class="line"><span class="comment"># 左缩进1厘米</span></span><br><span class="line">p.paragraph_format.left_indent = Cm(<span class="number">1.0</span>)  </span><br><span class="line"><span class="comment"># 首行缩进0.5厘米【负数为悬挂缩进】</span></span><br><span class="line">p.paragraph_format.first_line_indent = Cm(<span class="number">0.5</span>)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="间距"><a href="#间距" class="headerlink" title="间距"></a>间距</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.5倍行距</span></span><br><span class="line">p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE </span><br><span class="line"><span class="comment"># 设置固定行距为21磅</span></span><br><span class="line">p.line_spacing_rule = WD_LINE_SPACING.EXACTLY </span><br><span class="line">p.paragraph_format.line_spacing = Pt(<span class="number">21</span>)</span><br><span class="line"><span class="comment"># 首行缩进（两个中文字符大约42磅）</span></span><br><span class="line">p.paragraph_format.first_line_indent = Pt(<span class="number">42</span>)</span><br><span class="line"><span class="comment"># 段前间距6磅</span></span><br><span class="line">p.paragraph_format.space_before = Pt(<span class="number">6</span>)  </span><br><span class="line"><span class="comment"># 段后间距6磅</span></span><br><span class="line">p.paragraph_format.space_after = Pt(<span class="number">6</span>)   </span><br></pre></td></tr></table></figure>
+
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 段落前分页</span></span><br><span class="line">p.paragraph_format.page_break_before = <span class="literal">True</span>  </span><br></pre></td></tr></table></figure>
+
+<h1 id="4-表格相关操作"><a href="#4-表格相关操作" class="headerlink" title="4. 表格相关操作"></a>4. 表格相关操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3行3列带网格的表格</span></span><br><span class="line">table = doc.add_table(rows=<span class="number">3</span>, cols=<span class="number">3</span>, style=<span class="string">&#x27;Table Grid&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="表格尺寸"><a href="#表格尺寸" class="headerlink" title="表格尺寸"></a>表格尺寸</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 行数</span></span><br><span class="line">rows_count = <span class="built_in">len</span>(table.rows)  </span><br><span class="line"><span class="comment"># 列数</span></span><br><span class="line">cols_count = <span class="built_in">len</span>(table.columns)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="添加新行"><a href="#添加新行" class="headerlink" title="添加新行"></a>添加新行</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 表格底部添加新行</span></span><br><span class="line">new_row = table.add_row().cells</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问单元格cell"><a href="#访问单元格cell" class="headerlink" title="访问单元格cell"></a>访问单元格cell</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第1行第2列的单元格</span></span><br><span class="line">cell = table.cell(<span class="number">0</span>, <span class="number">1</span>)  </span><br><span class="line"><span class="comment"># 第2列第1行的单元格（可通过迭代访问所有单元格）</span></span><br><span class="line">cell = table.columns[<span class="number">1</span>].cells[<span class="number">0</span>] </span><br><span class="line"><span class="comment"># 第1行第2列的单元格（可通过迭代访问所有单元格）</span></span><br><span class="line">cell = table.rows[<span class="number">0</span>].cells[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并单元格"><a href="#合并单元格" class="headerlink" title="合并单元格"></a>合并单元格</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 合并第1行的前两列</span></span><br><span class="line">table.cell(<span class="number">0</span>, <span class="number">0</span>).merge(table.cell(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># 合并多行多列（2x2区域）</span></span><br><span class="line">table.cell(<span class="number">0</span>, <span class="number">0</span>).merge(table.cell(<span class="number">1</span>, <span class="number">1</span>))  </span><br></pre></td></tr></table></figure>
+
+<h2 id="单元格对齐"><a href="#单元格对齐" class="headerlink" title="单元格对齐"></a>单元格对齐</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.enum.text <span class="keyword">import</span> WD_ALIGN_PARAGRAPH, WD_ALIGN_VERTICAL</span><br><span class="line"><span class="comment"># 水平对齐（左、中、右）</span></span><br><span class="line">cell.paragraphs[<span class="number">0</span>].alignment = WD_ALIGN_PARAGRAPH.CENTER </span><br><span class="line"><span class="comment"># 垂直对齐（上、中、下）</span></span><br><span class="line">cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER  </span><br></pre></td></tr></table></figure>
+
+<h2 id="宽度与高度"><a href="#宽度与高度" class="headerlink" title="宽度与高度"></a>宽度与高度</h2><blockquote>
+<p>高度通常是按行为单位</p>
+</blockquote>
+<p><strong>宽度</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 表格总宽度15厘米</span></span><br><span class="line">table.width = Cm(<span class="number">15</span>)  </span><br><span class="line"><span class="comment"># 第1列宽度为3厘米</span></span><br><span class="line">table.columns[<span class="number">0</span>].width = Cm(<span class="number">3</span>)  </span><br><span class="line"><span class="comment"># 第1个单元格宽度为5厘米</span></span><br><span class="line">table.cell(<span class="number">0</span>, <span class="number">0</span>).width = Cm(<span class="number">5</span>)  </span><br></pre></td></tr></table></figure>
+
+<p><strong>高度</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.enum.text <span class="keyword">import</span> WD_ROW_HEIGHT_RULE</span><br><span class="line"><span class="comment"># 设置第1行为固定高度（即使内容不足也保持此高度）</span></span><br><span class="line">table.rows[<span class="number">0</span>].height_rule = WD_ROW_HEIGHT_RULE.EXACTLY</span><br><span class="line">table.rows[<span class="number">0</span>].height = Cm(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 清除固定高度设置</span></span><br><span class="line">table.rows[<span class="number">0</span>].height = <span class="literal">None</span> </span><br><span class="line"><span class="comment"># 设置第1行自动适应内容高度</span></span><br><span class="line">table.rows[<span class="number">0</span>].height_rule = WD_ROW_HEIGHT_RULE.AUTO</span><br></pre></td></tr></table></figure>
+
+<h2 id="单元格内容"><a href="#单元格内容" class="headerlink" title="单元格内容"></a>单元格内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接设置（会覆盖原有内容及格式）</span></span><br><span class="line">cell.text = <span class="string">&#x27;新内容&#x27;</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取单元格内第一个段落并修改文本内容</span></span><br><span class="line">cell.paragraphs[<span class="number">0</span>].text = <span class="string">&quot;保留格式的文本&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用run定位到更加精准的位置</span></span><br><span class="line">cell.paragraphs[<span class="number">0</span>].runs[<span class="number">0</span>].text = <span class="string">&quot;第一个段落的第一个run&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5-图片相关操作"><a href="#5-图片相关操作" class="headerlink" title="5. 图片相关操作"></a>5. 图片相关操作</h1><blockquote>
+<p>通过段落加Run的方式添加图片，图片大小需要在添加时指定</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单元格通过段落对象获得run</span></span><br><span class="line">run = cell.paragraphs[<span class="number">0</span>].add_run()</span><br><span class="line"><span class="comment"># 利用run添加图片并固定宽度（高度自适应，也可以填固定值）</span></span><br><span class="line">run.add_picture(<span class="string">&quot;./test/1.jpg&quot;</span>, width=Cm(<span class="number">6.4</span>))</span><br><span class="line"><span class="comment"># 设置图片居中</span></span><br><span class="line">cell.paragraphs[<span class="number">0</span>].alignment = WD_ALIGN_PARAGRAPH.CENTER</span><br></pre></td></tr></table></figure>
+
+<h1 id="6-节Section"><a href="#6-节Section" class="headerlink" title="6 节Section"></a>6 节Section</h1><blockquote>
+<p>每个Word文档至少有一个节。如果文档没有手动分节，整个文档就是一个节，通过插入分节符（如 “下一页”、“连续”、“偶数页” 等），可以将文档分成多个节，各节可以有独立的页面设置。</p>
+</blockquote>
+<h2 id="页面设置相关属性"><a href="#页面设置相关属性" class="headerlink" title="页面设置相关属性"></a>页面设置相关属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.enum.section <span class="keyword">import</span> WD_ORIENT</span><br><span class="line"><span class="keyword">from</span> docx.shared <span class="keyword">import</span> Cm</span><br><span class="line">section = doc.sections[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 修改页面方向为横向</span></span><br><span class="line">section.orientation = WD_ORIENT.LANDSCAPE</span><br><span class="line"><span class="comment"># A4纸大小</span></span><br><span class="line">section.page_width = Cm(<span class="number">29.7</span>)</span><br><span class="line">section.page_height = Cm(<span class="number">21.0</span>)</span><br><span class="line"><span class="comment"># 页面边距设置</span></span><br><span class="line">section.left_margin = Cm(<span class="number">2.5</span>)    </span><br><span class="line">section.right_margin = Cm(<span class="number">2.5</span>)   </span><br><span class="line">section.top_margin = Cm(<span class="number">3</span>)     </span><br><span class="line">section.bottom_margin = Cm(<span class="number">3</span>)  </span><br></pre></td></tr></table></figure>
+
+<h2 id="分节符"><a href="#分节符" class="headerlink" title="分节符"></a>分节符</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> docx.enum.section <span class="keyword">import</span> WD_SECTION</span><br><span class="line"><span class="comment"># 插入下一页分节符（新节从下一页开始）</span></span><br><span class="line">doc.add_section(WD_SECTION.NEW_PAGE)</span><br><span class="line"><span class="comment"># 连续分节符会在当前位置开始新节，不强制分页</span></span><br><span class="line">doc.add_section(WD_SECTION.CONTINUOUS)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" data-id="cmfapt04p000194gnexbfh7c8" data-title="Word文档自动化基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          服务器离线环境部署指南
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo + GitHub完成个人博客部署</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">Linux环境离线部署</a> <a href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 10px;">办公自动化</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" style="font-size: 10px;">域名申请</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">服务器离线环境部署指南</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/">Word文档自动化基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">Hexo + GitHub完成个人博客部署</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

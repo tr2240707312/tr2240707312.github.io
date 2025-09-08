@@ -71,12 +71,46 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-wsl重装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/09/08/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-09-08T03:33:58.176Z" itemprop="datePublished">2025-09-08</time>
+    <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2025-09-08T05:58:18.697Z" itemprop="datePublished">2025-09-08</time>
 </a>
     
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卸载wsl子系统</span></span><br><span class="line">wsl <span class="literal">--unregister</span> Ubuntu<span class="literal">-24</span>.<span class="number">04</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#从tar包导入子系统</span></span><br><span class="line">wsl <span class="literal">--import</span> Ubuntu<span class="literal">-24</span>.<span class="number">04</span> D:\linux\Ubuntu<span class="literal">-24</span>.<span class="number">04</span> D:\linux\Ubuntu<span class="literal">-24</span>.<span class="number">04</span>.tar</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/08/wsl%E9%87%8D%E8%A3%85/" data-id="cmfapt04s000394gnhowr515x" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-服务器离线环境部署指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" class="article-date">
+  <time class="dt-published" datetime="2025-07-31T09:17:50.000Z" itemprop="datePublished">2025-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +119,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/08/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">服务器离线环境部署指南</a>
     </h1>
   
 
@@ -93,27 +127,119 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        Linux服务器处于离线环境时，许多资源无法一步到位，需要手动部署相关依赖环境，过程繁琐且易遇到奇奇怪怪的问题，现将完美解决方案进行记录，便于后续有类似需求时提高处理效率
+        
+          <p class="article-more-link">
+            <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/hello-world/" data-id="cmfaoqzvl0000wognflt4ett7" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/" data-id="cmfapt050000h94gn7ow336v8" data-title="服务器离线环境部署指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Word文档自动化基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2025-07-13T13:54:21.000Z" itemprop="datePublished">2025-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/">Word文档自动化基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        第三方库python-docx可以实现word的简单自动化，面对Excel数据需要按照一定格式大量转换为Word文档的需求时，掌握此项技术可以大大提高效率！
+        
+          <p class="article-more-link">
+            <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/" data-id="cmfapt04p000194gnexbfh7c8" data-title="Word文档自动化基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo + GitHub完成个人博客部署" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T12:41:49.000Z" itemprop="datePublished">2025-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>►<a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">Hexo + GitHub完成个人博客部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        本文详细阐述了通过Hexo + GitHub部署个人在线博客的全部流程，有兴趣的朋友可以跟着动手尝试搭建属于自己的个人博客！
+        
+          <p class="article-more-link">
+            <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" data-id="cmfapt04j000094gn5pz1f03j" data-title="Hexo + GitHub完成个人博客部署" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
+
     </footer>
   </div>
   
@@ -129,18 +255,39 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/Python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Python第三方库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a></li></ul></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" rel="tag">Linux环境离线部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">办公自动化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" rel="tag">域名申请</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux%E7%8E%AF%E5%A2%83%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">Linux环境离线部署</a> <a href="/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 10px;">办公自动化</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a> <a href="/tags/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" style="font-size: 10px;">域名申请</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
     </div>
   </div>
 
@@ -153,7 +300,19 @@
       <ul>
         
           <li>
-            <a href="/2025/09/08/hello-world/">Hello World</a>
+            <a href="/2025/09/08/wsl%E9%87%8D%E8%A3%85/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/31/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A6%BB%E7%BA%BF%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97/">服务器离线环境部署指南</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/13/Word%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80/">Word文档自动化基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/07/Hexo%20+%20GitHub%E5%AE%8C%E6%88%90%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">Hexo + GitHub完成个人博客部署</a>
           </li>
         
       </ul>
